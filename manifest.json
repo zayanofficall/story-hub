@@ -1,0 +1,20 @@
+{
+  "name": "stores-hub App",
+  "short_name": "stores-hub",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f2937",
+  "icons": [
+    {
+      "src": "./storyesh-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./storyesh-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

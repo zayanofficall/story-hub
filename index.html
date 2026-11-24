@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storyesh — Illuminated Islamic Stories in English, Urdu & Arabic</title>
+    <link rel="shortcut icon" href="./storyesh-logo.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter, Amiri (Arabic), and Noto Nastaliq Urdu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+ 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldDeep: '#062c24',
+                        emeraldDark: '#041f19',
+                        emeraldMid: '#0b4236',
+                        goldPrimary: '#d4af37',
+                        goldLight: '#f3d98b',
+                        goldDark: '#aa8520',
+                        parchment: '#fcf9f2',
+                        parchmentWarm: '#f5efe0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Amiri', 'serif'],
+                        urdu: ['Noto Nastaliq Urdu', 'Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-emeraldDark text-stone-100 font-sans antialiased min-h-screen flex flex-col selection:bg-goldPrimary selection:text-emeraldDark">
+
+    <!-- Subtle Islamic Geometric Pattern Overlay via inline SVG background -->
+    <div class="fixed inset-0 pointer-events-none opacity-10 z-0" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='1'%3E%3Cpath d='M40 0L50 30L80 40L50 50L40 80L30 50L0 40L30 30Z'/%3E%3Ccircle cx='40' cy='40' r='14'/%3E%3Cpath d='M12 12L68 68M68 12L12 68' stroke-opacity='0.4'/%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-emeraldDeep/95 backdrop-blur-md border-b border-goldPrimary/30 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between py-3.5 gap-4">
+                
+                <!-- Brand Logo: Storyesh + Polished Gold Crescent Mosque Emblem -->
+                <a href="#all" onclick="switchLanguage('all', event)" class="flex items-center gap-3 group focus:outline-none">
+                    <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-emeraldMid to-emeraldDark border border-goldPrimary/50 flex items-center justify-center shadow-lg group-hover:border-goldLight transition-all duration-300">
+                        <!-- Custom Inline SVG: Polished Gold Crescent Mosque Emblem -->
+                        <svg viewBox="0 0 64 64" class="w-9 h-9 drop-shadow" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="goldGrad" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#f7e29c"/>
+                                    <stop offset="50%" stop-color="#d4af37"/>
+                                    <stop offset="100%" stop-color="#997316"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Outer Crescent -->
+                            <path d="M44 12C39.8 9.4 34.8 8 29.5 8C15.4 8 4 19.4 4 33.5C4 47.6 15.4 59 29.5 59C37.6 59 44.8 55.2 49.5 49.3C46.5 50.6 43.2 51.3 39.7 51.3C26.7 51.3 16.2 40.8 16.2 27.8C16.2 20.5 19.5 14 24.7 9.7C31.5 8.5 38.4 9.5 44 12Z" fill="url(#goldGrad)"/>
+                            <!-- Mosque Dome & Minaret Silhouette -->
+                            <path d="M38 22L39.5 18L41 22V44H38V22Z" fill="url(#goldGrad)"/>
+                            <path d="M25 35C25 28.5 31 24 31 24C31 24 37 28.5 37 35V44H25V35Z" fill="url(#goldGrad)"/>
+                            <rect x="22" y="42" width="22" height="3.5" rx="1.5" fill="url(#goldGrad)"/>
+                            <!-- Star -->
+                            <polygon points="48,19 49.3,22.2 52.8,22.5 50.1,24.8 50.9,28.2 48,26.3 45.1,28.2 45.9,24.8 43.2,22.5 46.7,22.2" fill="#f7e29c"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl sm:text-3xl font-bold tracking-tight bg-gradient-to-r from-goldLight via-goldPrimary to-amber-300 bg-clip-text text-transparent">
+                                Storyesh
+                            </span>
+                            <span class="hidden sm:inline-block text-[11px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-goldPrimary/15 text-goldLight border border-goldPrimary/30">
+                                100 Tales 🟢 
+                            </span>
+                        </div>
+                        <p class="text-xs text-emerald-200/75">Illuminated Islamic Stories & Wisdom</p>
+                    </div>
+                </a>
+
+                <!-- Primary Navbar Links: Three Dedicated Language File Links (English, Urdu, Arabic) + All -->
+                <nav aria-label="Language File Navigation" class="flex items-center gap-1.5 sm:gap-2 bg-emeraldDark/80 p-1.5 rounded-2xl border border-goldPrimary/25">
+                    <button id="nav-all" onclick="switchLanguage('all', event)" class="nav-tab px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 bg-goldPrimary text-emeraldDark shadow">
+                        All (100)
+                    </button>
+                    <a href="english.html" id="nav-english" onclick="switchLanguage('english', event)" class="nav-tab px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-emerald-100 hover:text-goldLight hover:bg-emeraldMid/60 transition-all duration-200 flex items-center gap-1.5" title="Open English Stories File (english.html)">
+                        <span>English</span>
+                        <span class="hidden md:inline text-[11px] opacity-75">(34)</span>
+                    </a>
+                    <a href="urdu.html" id="nav-urdu" onclick="switchLanguage('urdu', event)" class="nav-tab px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-emerald-100 hover:text-goldLight hover:bg-emeraldMid/60 transition-all duration-200 flex items-center gap-1.5" title="Open Urdu Stories File (urdu.html)">
+                        <span class="font-urdu text-sm leading-none">اردو</span>
+                        <span class="hidden sm:inline">Urdu</span>
+                        <span class="hidden md:inline text-[11px] opacity-75">(33)</span>
+                    </a>
+                    <a href="arabic.html" id="nav-arabic" onclick="switchLanguage('arabic', event)" class="nav-tab px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-emerald-100 hover:text-goldLight hover:bg-emeraldMid/60 transition-all duration-200 flex items-center gap-1.5" title="Open Arabic Stories File (arabic.html)">
+                        <span class="font-arabic text-base leading-none">العربية</span>
+                        <span class="hidden sm:inline">Arabic</span>
+                        <span class="hidden md:inline text-[11px] opacity-75">(33)</span>
+                    </a>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="relative z-10 border-b border-goldPrimary/20 bg-gradient-to-b from-emeraldDeep via-emeraldDeep/95 to-emeraldDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-goldPrimary/10 border border-goldPrimary/30 text-goldLight text-xs font-medium">
+                    <span>✦</span>
+                    <span id="active-file-badge">Viewing Complete Archive • index.html</span>
+                    <span>✦</span>
+                </div>
+                <h1 id="hero-title" class="text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                    Timeless <span class="text-goldPrimary">Islamic Stories</span> Across Three Sacred Tongues
+                </h1>
+                <p id="hero-subtitle" class="text-sm sm:text-base text-emerald-100/80 leading-relaxed">
+                    Explore 100 inspiring stories of the Prophets, noble Sahaba, righteous scholars, and timeless moral parables curated in English, Urdu (اردو), and Arabic (العربية).
+                </p>
+
+                <!-- Search & Category Filter Bar -->
+                <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 max-w-2xl mx-auto">
+                    <div class="relative flex-1">
+                        <svg class="w-5 h-5 text-goldPrimary/70 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            oninput="handleSearchAndFilter()"
+                            placeholder="Search 100 stories by title, prophet, topic, or moral..." 
+                            class="w-full pl-11 pr-4 py-3 rounded-2xl bg-emeraldDark/90 border border-goldPrimary/35 text-sm text-white placeholder-emerald-200/50 focus:outline-none focus:border-goldPrimary focus:ring-2 focus:ring-goldPrimary/25 transition-all"
+                        >
+                    </div>
+                    <select 
+                        id="category-filter" 
+                        onchange="handleSearchAndFilter()"
+                        class="px-4 py-3 rounded-2xl bg-emeraldDark/90 border border-goldPrimary/35 text-sm text-emerald-100 focus:outline-none focus:border-goldPrimary cursor-pointer"
+                    >
+                        <option value="all">All Categories</option>
+                        <option value="Prophets">Stories of Prophets</option>
+                        <option value="Sahaba">Companions (Sahaba)</option>
+                        <option value="Wisdom">Moral & Wisdom</option>
+                        <option value="History">Islamic Heritage</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Quick Stats & Direct File Switcher Strip -->
+            <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto">
+                <button onclick="switchLanguage('all', event)" class="p-3.5 rounded-2xl bg-emeraldMid/40 hover:bg-emeraldMid/70 border border-goldPrimary/25 text-center transition-all">
+                    <div class="text-xl sm:text-2xl font-bold text-goldLight">100</div>
+                    <div class="text-xs text-emerald-200/80">Total Curated Stories</div>
+                </button>
+                <button onclick="switchLanguage('english', event)" class="p-3.5 rounded-2xl bg-emeraldMid/40 hover:bg-emeraldMid/70 border border-goldPrimary/25 text-center transition-all">
+                    <div class="text-xl sm:text-2xl font-bold text-goldLight">34</div>
+                    <div class="text-xs text-emerald-200/80">English (english.html)</div>
+                </button>
+                <button onclick="switchLanguage('urdu', event)" class="p-3.5 rounded-2xl bg-emeraldMid/40 hover:bg-emeraldMid/70 border border-goldPrimary/25 text-center transition-all">
+                    <div class="text-xl sm:text-2xl font-bold text-goldLight font-urdu">۳۳</div>
+                    <div class="text-xs text-emerald-200/80">Urdu (urdu.html)</div>
+                </button>
+                <button onclick="switchLanguage('arabic', event)" class="p-3.5 rounded-2xl bg-emeraldMid/40 hover:bg-emeraldMid/70 border border-goldPrimary/25 text-center transition-all">
+                    <div class="text-xl sm:text-2xl font-bold text-goldLight font-arabic">٣٣</div>
+                    <div class="text-xs text-emerald-200/80">Arabic (arabic.html)</div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area: Stories Grid -->
+    <main class="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        
+        <!-- Results Header -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-goldPrimary/20">
+            <div>
+                <h2 id="section-heading" class="text-xl sm:text-2xl font-bold text-white">All 100 Islamic Stories</h2>
+                <p id="results-count" class="text-xs sm:text-sm text-emerald-200/75 mt-0.5">Showing 100 stories</p>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-emerald-200/80">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-goldPrimary"></span>
+                <span>Click any story card to open the illuminated reader</span>
+            </div>
+        </div>
+
+        <!-- Stories Cards Container -->
+        <div id="stories-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamically populated by JavaScript with all 100 stories -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-16 px-4 rounded-3xl bg-emeraldDeep/60 border border-goldPrimary/25">
+            <div class="text-4xl mb-3">📖</div>
+            <h3 class="text-lg font-semibold text-goldLight">No matching stories found</h3>
+            <p class="text-sm text-emerald-200/75 mt-1 max-w-md mx-auto">Try clearing your search term or switching back to all categories and languages.</p>
+            <button onclick="resetFilters()" class="mt-4 px-5 py-2.5 rounded-xl bg-goldPrimary text-emeraldDark font-semibold text-sm hover:bg-goldLight transition-colors">
+                Reset Filters
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Full Story Reader Modal -->
+    <div id="story-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true">
+        <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-parchment text-stone-900 border-2 border-goldPrimary shadow-2xl p-6 sm:p-8">
+            
+            <!-- Modal Header -->
+            <div class="flex items-start justify-between gap-4 pb-4 border-b border-stone-300/80">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span id="modal-number" class="px-2.5 py-1 rounded-lg bg-emeraldDeep text-goldLight text-xs font-bold">#001</span>
+                    <span id="modal-lang-badge" class="px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 border border-amber-300 text-xs font-semibold">English</span>
+                    <span id="modal-category" class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 text-xs font-medium">Prophets</span>
+                </div>
+                <button onclick="closeStoryModal()" aria-label="Close reader" class="p-2 rounded-xl bg-stone-200/80 hover:bg-stone-300 text-stone-700 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div id="modal-content-wrapper" class="mt-5 space-y-5">
+                <h2 id="modal-title" class="text-2xl sm:text-3xl font-bold text-emeraldDeep leading-snug">Story Title</h2>
+                <p id="modal-subtitle" class="text-xs sm:text-sm font-medium text-amber-800 uppercase tracking-wider">Reference / Era</p>
+                
+                <div id="modal-body" class="text-base sm:text-lg text-stone-800 leading-relaxed space-y-4">
+                    <!-- Full story paragraphs -->
+                </div>
+
+                <!-- Moral Lesson Callout -->
+                <div class="p-4 sm:p-5 rounded-2xl bg-parchmentWarm border border-goldPrimary/60">
+                    <div id="modal-moral-label" class="text-xs font-bold uppercase tracking-wider text-emeraldDeep mb-1">✦ Moral & Reflection</div>
+                    <p id="modal-moral" class="text-sm sm:text-base font-medium text-stone-800"></p>
+                </div>
+            </div>
+
+            <!-- Modal Footer Controls -->
+            <div class="mt-6 pt-4 border-t border-stone-300/80 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                    <button id="prev-story-btn" onclick="navigateModalStory(-1)" class="px-4 py-2 rounded-xl bg-stone-200 hover:bg-stone-300 text-stone-800 text-sm font-medium transition-colors">
+                        ← Previous
+                    </button>
+                    <button id="next-story-btn" onclick="navigateModalStory(1)" class="px-4 py-2 rounded-xl bg-stone-200 hover:bg-stone-300 text-stone-800 text-sm font-medium transition-colors">
+                        Next →
+                    </button>
+                </div>
+                <button onclick="copyCurrentStory()" id="copy-btn" class="px-4 py-2 rounded-xl bg-emeraldDeep hover:bg-emeraldMid text-goldLight text-sm font-medium transition-colors">
+                    Copy Story
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-emeraldDeep border-t border-goldPrimary/25 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-lg font-bold text-goldLight">Storyesh</span>
+                    <span class="text-emerald-200/60 text-xs"> 🟢 100 Islamic Stories in English, Urdu & Arabic | invented by zayan official  🟢 </span>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-emerald-200/80">
+                    <a href="english.html" onclick="switchLanguage('english', event)" class="hover:text-goldLight transition-colors">english.html</a>
+                    <span>•</span>
+                    <a href="urdu.html" onclick="switchLanguage('urdu', event)" class="hover:text-goldLight transition-colors">urdu.html</a>
+                    <span>•</span>
+                    <a href="arabic.html" onclick="switchLanguage('arabic', event)" class="hover:text-goldLight transition-colors">arabic.html</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Data & Interactive Logic -->
+    <script>
+        /**
+         * Curated 100 Islamic Stories Database:
+         * - 34 English Stories (#1 - #34)
+         * - 33 Urdu Stories (#35 - #67)
+         * - 33 Arabic Stories (#68 - #100)
+         */
+        const storiesData = [
+            // ================= ENGLISH STORIES (1 - 34) =================
+            {
+                id: 1,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'Prophet Nuh (AS) and the Ark of Patience',
+                era: 'Surah Hud • Patience & Steadfastness',
+                excerpt: 'For 950 years Prophet Nuh (AS) called his people to truth with unwavering patience, building an ark far from any sea until the divine promise arrived.',
+                content: [
+                    'Prophet Nuh (peace be upon him) called his people to worship Allah alone for nine hundred and fifty years. Despite mockery from the leaders of his nation, he never abandoned hope or sincerity.',
+                    'Commanded by Allah, Nuh (AS) began constructing a massive wooden ark in the middle of dry land. Passersby ridiculed him, yet he continued with calm conviction, reminding them that Allah’s promise is always true.',
+                    'When the waters gushed forth from the earth and poured from the skies, the believers and pairs of every creature were safely carried above the waves, proving that steadfast faith triumphs over every storm.'
+                ],
+                moral: 'True success lies in patient obedience to Allah, even when the surrounding world doubts your path.'
+            },
+            {
+                id: 2,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'Prophet Ibrahim (AS) and the Cool Fire',
+                era: 'Surah Al-Anbiya • Absolute Trust (Tawakkul)',
+                excerpt: 'Cast into a blazing furnace for standing up for pure monotheism, Prophet Ibrahim (AS) uttered "Hasbunallahu wa ni’mal Wakeel" and the fire became cool and peaceful.',
+                content: [
+                    'When young Ibrahim (peace be upon him) proved to his people that carved idols could neither hear nor harm, the tyrant king ordered a colossal fire to be kindled to punish him.',
+                    'As Ibrahim (AS) was catapulted toward the flames, he placed his complete reliance in Allah alone. Immediately, Allah commanded the fire: "O fire, be coolness and safety upon Ibrahim."',
+                    'To the astonishment of all onlookers, Ibrahim walked out unharmed—not even the ropes binding his wrists had been singed, except to free him.'
+                ],
+                moral: 'When a believer places complete trust in Allah, no worldly trial can ever cause real harm.'
+            },
+            {
+                id: 3,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'Prophet Yusuf (AS) and Forgiveness in Power',
+                era: 'Surah Yusuf • Mercy & Character',
+                excerpt: 'Betrayed by his brothers and imprisoned unjustly, Prophet Yusuf (AS) rose to lead Egypt and greeted those who wronged him with complete pardon.',
+                content: [
+                    'Thrown into a dark well as a boy and later imprisoned despite his innocence, Prophet Yusuf (peace be upon him) maintained impeccable character and gratitude in every circumstance.',
+                    'Years later, Allah elevated him to manage the granaries of Egypt during a severe famine. When his brothers arrived seeking grain and eventually recognized him, they feared retribution.',
+                    'Instead of vengeance, Yusuf (AS) gently said, "No blame will there be upon you today. May Allah forgive you; and He is the most merciful of the merciful."'
+                ],
+                moral: 'True nobility is shown when you possess the power to retaliate yet choose to forgive.'
+            },
+            {
+                id: 4,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'Prophet Yunus (AS) in the Depths of Darkness',
+                era: 'Surah Al-Anbiya • Sincere Repentance',
+                excerpt: 'Inside the belly of the whale beneath the dark ocean, Prophet Yunus (AS) called out with a timeless supplication that opened the doors of mercy.',
+                content: [
+                    'Swallowed by a great fish in the middle of a stormy sea, Prophet Yunus (peace be upon him) found himself enveloped in three layers of darkness: the night, the ocean depths, and the belly of the whale.',
+                    'In that moment of utter helplessness, he turned inward with pure humility and cried out: "La ilaha illa Anta, Subhanaka inni kuntu minaz-zalimin" (There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers).',
+                    'Allah answered his sincere call immediately, casting him safely onto a shore where a shading gourd vine grew to restore his strength.'
+                ],
+                moral: 'No matter how deep the darkness seems, sincere repentance and glorification of Allah bring immediate rescue.'
+            },
+            {
+                id: 5,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'Prophet Musa (AS) at the Parted Sea',
+                era: 'Surah Ash-Shu’ara • Certainty in Allah',
+                excerpt: 'Trapped between Pharaoh’s advancing army and the roaring Red Sea, Prophet Musa (AS) declared with unshakable certainty: "Indeed, with me is my Lord; He will guide me."',
+                content: [
+                    'As Pharaoh’s chariots closed in from behind and the vast Red Sea blocked the path ahead, fear gripped the followers of Prophet Musa (peace be upon him).',
+                    'With serene conviction, Musa (AS) assured them: "Never! Indeed, with me is my Lord; He will guide me." Allah then commanded him to strike the sea with his staff.',
+                    'The waters parted into towering walls on either side, creating a dry pathway to freedom for the believers.'
+                ],
+                moral: 'When every worldly door appears closed, certainty in Allah opens pathways unimaginable to human eyes.'
+            },
+            {
+                id: 6,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'Prophet Sulayman (AS) and the Humble Ant',
+                era: 'Surah An-Naml • Compassion & Humility',
+                excerpt: 'Commanding a mighty army of humans, jinn, and birds, Prophet Sulayman (AS) smiled at the warning of a tiny ant and thanked Allah for his blessings.',
+                content: [
+                    'As Prophet Sulayman (peace be upon him) marched with his vast hosts through the Valley of the Ants, a tiny ant called out to her colony to enter their dwellings lest they be crushed unknowingly.',
+                    'Given the miracle of understanding creatures, Sulayman (AS) smiled warmly, halted his forces so the ants could pass safely, and raised his hands in gratitude to Allah.',
+                    'He prayed that Allah inspire him to remain grateful and to perform righteous deeds pleasing to Him.'
+                ],
+                moral: 'Greatness is measured by gentleness toward the smallest of Allah’s creations.'
+            },
+            {
+                id: 7,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'Prophet Ayyub (AS) and Unbroken Gratitude',
+                era: 'Surah Sad • Perseverance in Trial',
+                excerpt: 'Tested with the loss of wealth, family, and health for many years, Prophet Ayyub (AS) never uttered a word of complaint against his Lord.',
+                content: [
+                    'Prophet Ayyub (peace be upon him) was blessed with abundant prosperity and family, yet when severe trials stripped away his health and possessions, his tongue remained moist with praise of Allah.',
+                    'When he finally turned to Allah in gentle supplication, he merely said: "Indeed, adversity has touched me, and You are the Most Merciful of the merciful."',
+                    'Allah commanded him to strike the ground with his foot, bringing forth a cool spring that healed him completely and restored his blessings twofold.'
+                ],
+                moral: 'Patience without complaint turns every hardship into a gateway for multiplied divine grace.'
+            },
+            {
+                id: 8,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'Prophet Dawud (AS) and the Psalms of Praise',
+                era: 'Surah Saba • Devotion & Justice',
+                excerpt: 'When Prophet Dawud (AS) recited the Zabur in devotion, the mountains and birds echoed his glorification in harmony.',
+                content: [
+                    'Prophet Dawud (peace be upon him) was granted both kingdom and prophethood, yet he insisted on eating only from the earnings of his own hands by crafting chainmail armor.',
+                    'At dawn and dusk, his melodious voice filled with awe of Allah caused the surrounding mountains and passing birds to join in glorifying the Creator.',
+                    'He divided his days between governing with fairness, worshipping Allah, and caring for his family.'
+                ],
+                moral: 'Sincere remembrance of Allah brings harmony between the human heart and the natural world.'
+            },
+            {
+                id: 9,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'Prophet Ismail (AS) and the Well of Zamzam',
+                era: 'Makkah Heritage • Sacrifice & Reliance',
+                excerpt: 'Left in the barren valley of Makkah with her infant Ismail, Hajar trusted Allah’s command—and from beneath the baby’s heels sprang Zamzam.',
+                content: [
+                    'When Hajar asked Prophet Ibrahim (AS) if Allah had commanded him to leave her and baby Ismail in the uncultivated valley of Makkah, and he answered yes, she replied: "Then Allah will not neglect us."',
+                    'Running seven times between the hills of Safa and Marwah in search of water, she heard a sound near her infant and saw Angel Jibril striking the earth.',
+                    'Pure, blessed water gushed forth—the spring of Zamzam—which continues to nourish millions of pilgrims to this day.'
+                ],
+                moral: 'Effort combined with unwavering trust in Allah brings sustenance from barren ground.'
+            },
+            {
+                id: 10,
+                lang: 'english',
+                category: 'Prophets',
+                title: 'The Mercy of Prophet Muhammad ﷺ at Ta’if',
+                era: 'Seerah • Unmatched Compassion',
+                excerpt: 'Pelted with stones until his blessed sandals bled, the Prophet ﷺ refused to curse the people of Ta’if and instead prayed for their descendants.',
+                content: [
+                    'After enduring severe rejection and physical injury in the town of Ta’if, the Prophet Muhammad ﷺ took shelter in an orchard and offered a deeply moving prayer to Allah.',
+                    'The Angel of the Mountains appeared and offered to crush the town between two mountains at his command. Despite his pain, the Prophet ﷺ declined.',
+                    'He replied: "Rather, I hope that Allah will bring forth from their loins people who will worship Allah alone without associating anything with Him."'
+                ],
+                moral: 'Mercy is strongest when extended to those who have caused us pain.'
+            },
+            {
+                id: 11,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Abu Bakr As-Siddiq (RA) in the Cave of Thawr',
+                era: 'Hijrah • Loyalty & Comradeship',
+                excerpt: 'Shielding the Prophet ﷺ inside the narrow cave while enemies stood steps away, Abu Bakr (RA) heard the reassuring words: "Do not grieve; indeed Allah is with us."',
+                content: [
+                    'During the migration to Madinah, Abu Bakr As-Siddiq (may Allah be pleased with him) cleared every crevice of the Cave of Thawr before letting the Prophet ﷺ rest.',
+                    'When pursuers stood right outside the cave entrance, Abu Bakr whispered in concern that if they looked down at their feet, they would see them.',
+                    'The Prophet ﷺ comforted him softly: "What do you think of two with whom Allah is the third? Do not grieve; indeed Allah is with us."'
+                ],
+                moral: 'True companionship is anchored in shared faith and the certainty of Allah’s protection.'
+            },
+            {
+                id: 12,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Umar ibn Al-Khattab (RA) and the Hungry Mother',
+                era: 'Caliphate • Servant Leadership',
+                excerpt: 'Patrolling Madinah by night, Caliph Umar (RA) carried sacks of flour on his own back to cook for a starving family.',
+                content: [
+                    'While checking on the welfare of citizens late at night, Caliph Umar ibn Al-Khattab (RA) saw a woman boiling water with stones inside a pot to soothe her crying children until they fell asleep.',
+                    'Moved to tears, Umar hurried to the public storehouse, loaded flour and fat onto his own shoulders, and refused to let his servant carry the burden, saying: "Will you carry my sins on the Day of Judgment?"',
+                    'He personally fanned the fire until the meal was cooked and watched the children laugh and eat their fill.'
+                ],
+                moral: 'Leadership in Islam is a sacred responsibility of humble service, not privilege.'
+            },
+            {
+                id: 13,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Uthman ibn Affan (RA) and the Well of Rumah',
+                era: 'Madinah • Generosity & Endowment',
+                excerpt: 'When migrants in Madinah struggled for fresh water, Uthman (RA) purchased the Well of Rumah and gifted it freely to the entire community.',
+                content: [
+                    'Upon arriving in Madinah, the Muhajirun found fresh drinking water scarce, as the sweet Well of Rumah was owned by a merchant who charged high prices.',
+                    'Hearing the Prophet ﷺ promise Paradise to whoever bought and endowed the well, Uthman ibn Affan (RA) negotiated to buy half of it first, making water free on alternate days.',
+                    'Soon the owner sold the remaining half to Uthman, who dedicated the entire well as a perpetual charity (Waqf) for rich and poor alike.'
+                ],
+                moral: 'Wealth finds its highest purpose when shared to relieve the hardship of others.'
+            },
+            {
+                id: 14,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Ali ibn Abi Talib (RA) and the Lost Shield',
+                era: 'Justice • Equality Before the Law',
+                excerpt: 'Even as Caliph, Ali (RA) stood beside an ordinary citizen before a judge and accepted the verdict gracefully when he lacked two witnesses.',
+                content: [
+                    'Caliph Ali ibn Abi Talib (RA) recognized his missing armor in the possession of a Christian citizen in Kufa and brought the matter before Judge Shurayh.',
+                    'Because Ali (RA) could only present his son Hasan as a witness—and a son’s testimony for his father was not accepted—the judge ruled in favor of the citizen.',
+                    'Deeply moved by a ruler submitting humbly to impartial justice, the citizen returned the armor willingly and embraced Islam.'
+                ],
+                moral: 'Impartial justice wins hearts more powerfully than authority ever could.'
+            },
+            {
+                id: 15,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Bilal ibn Rabah (RA) and the Call of "Ahad"',
+                era: 'Makkah • Resilience & Dignity',
+                excerpt: 'Under the scorching desert sun with a heavy boulder on his chest, Bilal (RA) repeated "Ahad, Ahad" (One, One) until freedom and honor crowned him.',
+                content: [
+                    'Tortured mercilessly in the burning sands of Makkah to make him renounce his faith, Bilal ibn Rabah (RA) refused to yield, repeating only "Ahad, Ahad" — Allah is One.',
+                    'Ransomed and freed by Abu Bakr (RA), Bilal rose to become the very first Mu’adhdhin of Islam, calling believers to prayer from the rooftops of Madinah and atop the Ka’bah.',
+                    'His story forever proved that human dignity belongs to faith and character, never lineage or status.'
+                ],
+                moral: 'An unyielding heart anchored in truth cannot be conquered by oppression.'
+            },
+            {
+                id: 16,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Khadijah bint Khuwaylid (RA) and the First Comfort',
+                era: 'Makkah • Wisdom & Support',
+                excerpt: 'When the first revelation descended in Cave Hira, Khadijah (RA) wrapped the Prophet ﷺ in warmth and reminded him of his noble character.',
+                content: [
+                    'Trembling after his first encounter with Angel Jibril in Cave Hira, the Prophet ﷺ returned home to Khadijah bint Khuwaylid (RA) and asked her to cover him.',
+                    'With serene wisdom, she reassured him: "Never! By Allah, Allah will never disgrace you. You keep good relations with your kin, help the poor, serve guests generously, and assist those afflicted by calamity."',
+                    'She stood by him with her wealth, wisdom, and unwavering devotion as the very first believer.'
+                ],
+                moral: 'A supportive, wise partner is one of Allah’s greatest blessings during life’s defining moments.'
+            },
+            {
+                id: 17,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Salman Al-Farsi (RA) and the Search for Truth',
+                era: 'Persia to Madinah • Seeking Knowledge',
+                excerpt: 'Leaving wealth and homeland behind, Salman Al-Farsi (RA) journeyed across lands for years until his search led him to the Prophet ﷺ.',
+                content: [
+                    'Born into comfort in Persia, Salman Al-Farsi (RA) felt an inner yearning for pure truth that led him to leave his home and study with sincere scholars across Syria and Arabia.',
+                    'Though betrayed and sold into slavery along the way, he recognized the signs of the final Messenger in Madinah and gained his freedom with the Prophet’s help.',
+                    'Later, it was Salman’s brilliant counsel to dig the Trench (Khandaq) that saved Madinah during the Battle of the Confederates.'
+                ],
+                moral: 'Whoever sincerely seeks the truth will always be guided to it by Allah.'
+            },
+            {
+                id: 18,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Sumayyah bint Khayyat (RA) — First Martyr of Islam',
+                era: 'Makkah • Courage & Conviction',
+                excerpt: 'Elderly and frail in body yet unbreakable in spirit, Sumayyah (RA) stood firm in her faith and became the first martyr in Islamic history.',
+                content: [
+                    'Among the earliest converts in Makkah, Sumayyah bint Khayyat (RA) and her family endured relentless persecution because they had no tribal protector.',
+                    'Despite every threat, she refused to utter a single word against Islam, demonstrating courage that inspired generations of believers.',
+                    'The Prophet ﷺ passed by her family and gave them glad tidings: "Patience, O family of Yasir, for your appointed meeting place is Paradise."'
+                ],
+                moral: 'True strength resides in the soul’s conviction, far beyond physical power.'
+            },
+            {
+                id: 19,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Suhayb Ar-Rumi (RA) and the Profitable Trade',
+                era: 'Hijrah • Sacrificing Wealth for Faith',
+                excerpt: 'Surrounded by guards who demanded his life savings to let him migrate, Suhayb (RA) handed over every coin gladly to join the Prophet ﷺ.',
+                content: [
+                    'As Suhayb Ar-Rumi (RA) set out to migrate to Madinah, Quraysh riders intercepted him and declared he could not leave with the wealth he had earned in Makkah.',
+                    'Without hesitation, Suhayb told them where every dinar was hidden in exchange for free passage to Madinah.',
+                    'When he arrived empty-handed, the Prophet ﷺ greeted him joyfully: "The trade has profited, O Abu Yahya! The trade has profited!"'
+                ],
+                moral: 'Trading fleeting worldly wealth for the pleasure of Allah is always a winning transaction.'
+            },
+            {
+                id: 20,
+                lang: 'english',
+                category: 'Sahaba',
+                title: 'Mus’ab ibn Umayr (RA) — First Ambassador of Islam',
+                era: 'Madinah • Gentle Da’wah',
+                excerpt: 'Trading silken luxury for patched garments, young Mus’ab (RA) won the hearts of Madinah through gentle wisdom and Qur’anic recitation.',
+                content: [
+                    'Once the most stylish and pampered youth of Makkah, Mus’ab ibn Umayr (RA) gave up every luxury for the sake of Islam.',
+                    'Sent by the Prophet ﷺ to teach the people of Yathrib (Madinah), Mus’ab responded to hostility with calm courtesy and invited leaders to simply sit and listen to the Qur’an.',
+                    'Within a year, nearly every household in Madinah had embraced Islam through his gentle character.'
+                ],
+                moral: 'Wisdom, patience, and gentle speech open doors that harshness keeps locked.'
+            },
+            {
+                id: 21,
+                lang: 'english',
+                category: 'Wisdom',
+                title: 'The People of the Cave (Ashab Al-Kahf)',
+                era: 'Surah Al-Kahf • Youthful Faith',
+                excerpt: 'Young believers fled a tyrannical city to protect their faith and slept peacefully in a cave for 309 years under Allah’s care.',
+                content: [
+                    'Refusing to bow to idols in a corrupt city, a group of courageous young men sought refuge in a mountain cave, praying: "Our Lord, grant us from Yourself mercy and prepare for us from our affair right guidance."',
+                    'Allah cast a deep, protective sleep over them for three hundred and nine years, turning them gently from side to side while the sun’s rays shifted around their cave.',
+                    'When they awoke thinking they had slept a single day, their story became an eternal sign of Allah’s power over time and resurrection.'
+                ],
+                moral: 'When youth take a single step to protect their faith, Allah safeguards them beyond imagination.'
+            },
+            {
+                id: 22,
+                lang: 'english',
+                category: 'Wisdom',
+                title: 'Luqman the Wise and His Counsel to His Son',
+                era: 'Surah Luqman • Parenting & Ethics',
+                excerpt: 'Preserved forever in the Qur’an, Luqman’s gentle advice teaches gratitude, humility, prayer, and speaking with calm dignity.',
+                content: [
+                    'Addressing his son with tenderness ("O my dear son"), Luqman began by warning against associating partners with Allah and reminding him that every deed—even the weight of a mustard seed—is known to Allah.',
+                    'He urged him to establish prayer, enjoin good, bear patience with whatever befalls him, and never turn his cheek in arrogance toward people.',
+                    '"Be moderate in your pace and lower your voice," Luqman advised, planting seeds of timeless character.'
+                ],
+                moral: 'True wisdom combines reverence for Allah with humility and kindness toward people.'
+            },
+            {
+                id: 23,
+                lang: 'english',
+                category: 'Wisdom',
+                title: 'The Two Men and the Twin Gardens',
+                era: 'Surah Al-Kahf • Humility vs. Arrogance',
+                excerpt: 'Boasting that his lush vineyards would never perish, a wealthy man forgot to say "Masha’Allah" and awoke to find his pride reduced to ruins.',
+                content: [
+                    'Allah blessed a man with two flourishing gardens of grapevines surrounded by date palms and flowing streams. Yet instead of gratitude, arrogance filled his heart.',
+                    'His humble companion reminded him to credit Allah and say, "Masha’Allah, la quwwata illa billah" (Whatever Allah wills; there is no power except with Allah).',
+                    'Ignoring the counsel, the arrogant owner lost his harvest overnight and realized too late that true protection belongs to Allah alone.'
+                ],
+                moral: 'Gratitude preserves blessings, while arrogance invites their loss.'
+            },
+            {
+                id: 24,
+                lang: 'english',
+                category: 'Wisdom',
+                title: 'The Thirsty Dog and the Forgiven Traveler',
+                era: 'Sahih Hadith • Mercy to Animals',
+                excerpt: 'Climbing down a desert well to fill his shoe with water for a panting dog, a traveler earned Allah’s forgiveness through simple kindness.',
+                content: [
+                    'Walking along a scorching desert road, a man grew intensely thirsty until he found a well and drank his fill.',
+                    'Emerging from the well, he noticed a dog panting and licking the moist earth from extreme thirst. Feeling deep compassion, the man climbed back down, filled his leather shoe with water, and held it for the dog to drink.',
+                    'The Prophet ﷺ taught that Allah appreciated this act of mercy and forgave the man’s sins, adding: "In every living creature there is a reward."'
+                ],
+                moral: 'No act of compassion toward any living being is ever small in the sight of Allah.'
+            },
+            {
+                id: 25,
+                lang: 'english',
+                category: 'Wisdom',
+                title: 'The Three Men Trapped in the Mountain Cave',
+                era: 'Sahih Hadith • Sincere Good Deeds',
+                excerpt: 'Sealed inside a cave by a fallen boulder, three travelers prayed through their purest sincere deeds until the rock rolled open.',
+                content: [
+                    'Seeking shelter from heavy rain, three travelers entered a mountain cave only for a massive boulder to crash down and block the entrance completely.',
+                    'Realizing only Allah could save them, each man recalled his most sincere deed done purely for Allah: one honored his elderly parents before feeding his own children, another resisted temptation out of fear of Allah, and the third preserved and multiplied a worker’s unpaid wage.',
+                    'With each sincere prayer, the boulder shifted further until they walked out freely into the daylight.'
+                ],
+                moral: 'Sincere deeds done solely for Allah become our greatest rescue in moments of distress.'
+            },
+            {
+                id: 26,
+                lang: 'english',
+                category: 'Wisdom',
+                title: 'The Leper, the Bald Man, and the Blind Man',
+                era: 'Sahih Hadith • Gratitude Tested',
+                excerpt: 'Healed and blessed with abundant herds by an angel, only the blind man remembered his humble beginnings and shared generously when tested.',
+                content: [
+                    'Allah sent an angel to heal three men—one with leprosy, one bald, and one blind—and blessed them with camels, cattle, and sheep that multiplied into vast herds.',
+                    'Years later, the angel returned disguised as a poor traveler asking for help in the name of the One who healed them. The first two denied their past and refused to share.',
+                    'The third man said warmly: "I was blind and Allah restored my sight; take whatever you wish and leave whatever you wish." His blessings remained intact while the ungrateful lost theirs.'
+                ],
+                moral: 'Never forget where you started, and share generously from the blessings Allah has entrusted to you.'
+            },
+            {
+                id: 27,
+                lang: 'english',
+                category: 'Wisdom',
+                title: 'The Honest Merchant Who Bought Land with Buried Gold',
+                era: 'Sahih Hadith • Integrity & Honesty',
+                excerpt: 'Finding a jar of gold buried in land he had just purchased, an honest man insisted on returning it to the seller—who equally refused to take what was not his.',
+                content: [
+                    'A man bought a plot of land from another, and while digging found a jar filled with gold. Immediately, he went back to the seller saying, "Take your gold, for I only bought the land from you, not the gold."',
+                    'The seller replied just as honestly, "I sold you the land and everything inside it."',
+                    'They sought a wise judge, who discovered one had a son and the other a daughter—and advised them to unite the families in marriage and spend the gold on the young couple and in charity.'
+                ],
+                moral: 'When integrity governs transactions, Allah places barakah (blessing) in everyone involved.'
+            },
+            {
+                id: 28,
+                lang: 'english',
+                category: 'Wisdom',
+                title: 'The Cloud That Watered a Single Garden',
+                era: 'Sahih Muslim • Charity in Secret',
+                excerpt: 'Hearing a voice from a raincloud instructed to water a specific man’s orchard, a traveler discovered the owner divided his harvest into three parts.',
+                content: [
+                    'A man walking in the desert heard a voice from a cloud say: "Water the garden of so-and-so." Curious, he followed the cloud until it poured rain solely over one farmer’s orchard.',
+                    'Asking the farmer what he did with his harvest, the farmer explained: "I divide the yield into thirds: one third I give in charity, one third I use for my family, and one third I reinvest into the land."',
+                    'Because of his consistent, quiet charity, the skies themselves were directed to nourish his fields.'
+                ],
+                moral: 'Consistent charity brings unseen provision from the heavens.'
+            },
+            {
+                id: 29,
+                lang: 'english',
+                category: 'History',
+                title: 'Uwais Al-Qarani — Known in the Heavens',
+                era: 'Tabi’un • Devotion to One’s Mother',
+                excerpt: 'Though he never met the Prophet ﷺ in person because he stayed behind to care for his elderly mother, the Prophet ﷺ praised him to his Companions.',
+                content: [
+                    'Living in Yemen, Uwais Al-Qarani longed deeply to travel to Madinah to see the Prophet ﷺ, yet his frail, elderly mother depended entirely on his care.',
+                    'Choosing his mother’s service above his own wish, Uwais remained unknown on earth—yet the Prophet ﷺ informed Umar (RA) and Ali (RA) of Uwais by name and asked them to seek his supplication.',
+                    'His devotion to his mother elevated his rank among the dwellers of the heavens.'
+                ],
+                moral: 'Serving one’s parents with love can elevate a person higher than great public deeds.'
+            },
+            {
+                id: 30,
+                lang: 'english',
+                category: 'History',
+                title: 'Imam Al-Bukhari and the Journey for a Single Hadith',
+                era: 'Scholarly Heritage • Academic Integrity',
+                excerpt: 'Traveling hundreds of miles to verify a single prophetic narration, Imam Al-Bukhari turned back when he saw the narrator deceive a horse with an empty feedbag.',
+                content: [
+                    'Imam Muhammad ibn Ismail Al-Bukhari dedicated his life to preserving authentic teachings of the Prophet ﷺ with unmatched rigor.',
+                    'After traveling a vast distance to hear a narration from a scholar, Al-Bukhari saw the man beckoning an unruly horse with an empty cloak as though it held barley.',
+                    'Al-Bukhari departed without recording from him, explaining: "Someone who is not honest with an animal cannot be trusted with the words of the Messenger of Allah ﷺ."'
+                ],
+                moral: 'Truthfulness must be consistent in every detail, even when no one seems to be watching.'
+            },
+            {
+                id: 31,
+                lang: 'english',
+                category: 'History',
+                title: 'Fatima Al-Fihri and the University of Al-Qarawiyyin',
+                era: '859 CE • Fez, Morocco • Legacy of Knowledge',
+                excerpt: 'Using her rightful inheritance, Fatima Al-Fihri founded Al-Qarawiyyin in Fez—recognized today as the oldest continuously operating university in the world.',
+                content: [
+                    'In 859 CE in Fez, Morocco, a devout and educated woman named Fatima Al-Fihri dedicated her entire inheritance to building a mosque and center of higher learning.',
+                    'Fasting throughout the construction until its completion, she envisioned a sanctuary where scholars and students of astronomy, mathematics, medicine, and Islamic sciences could gather freely.',
+                    'Over eleven centuries later, Al-Qarawiyyin still stands as a luminous beacon of Muslim contribution to global scholarship.'
+                ],
+                moral: 'Investing in knowledge creates an ongoing charity (Sadaqah Jariyah) that enlightens centuries.'
+            },
+            {
+                id: 32,
+                lang: 'english',
+                category: 'History',
+                title: 'Salahuddin Al-Ayyubi and the Mercy at Jerusalem',
+                era: '1187 CE • Chivalry & Nobility',
+                excerpt: 'Upon liberating Jerusalem, Salahuddin Al-Ayyubi forbade vengeance, protected places of worship, and used his own treasury to free impoverished captives.',
+                content: [
+                    'When Salahuddin Al-Ayyubi entered Jerusalem in 1187 CE, residents feared the bloodshed that had occurred nearly ninety years earlier during the city’s capture.',
+                    'Instead, Salahuddin guaranteed safe passage, posted guards to protect civilians and churches, and personally paid the ransom from his own funds for thousands of poor families who could not afford it.',
+                    'Even his adversaries chronicled his chivalry and fairness as a timeless model of noble leadership.'
+                ],
+                moral: 'True victory is crowned not by revenge, but by mercy and restraint.'
+            },
+            {
+                id: 33,
+                lang: 'english',
+                category: 'History',
+                title: 'Imam Ahmad ibn Hanbal and the Baker’s Istighfar',
+                era: 'Baghdad • Power of Seeking Forgiveness',
+                excerpt: 'Sheltering in a stranger’s bakery during a journey, Imam Ahmad discovered that the baker’s constant Istighfar had answered every prayer except one—meeting Imam Ahmad himself.',
+                content: [
+                    'Arriving in a town where no one recognized him, Imam Ahmad ibn Hanbal was warmly welcomed to rest for the night by a humble baker.',
+                    'Through the night, Imam Ahmad noticed the baker continuously whispering "Astaghfirullah" with every knead of dough and bake of bread. When asked about its fruit, the baker replied: "Every prayer I have ever made has been answered, except one: to meet Imam Ahmad ibn Hanbal."',
+                    'Smiling with awe, Imam Ahmad replied: "Allah has brought me traveling all this way just for you!"'
+                ],
+                moral: 'Constant Istighfar (seeking forgiveness) opens doors to blessings you never imagined.'
+            },
+            {
+                id: 34,
+                lang: 'english',
+                category: 'History',
+                title: 'Umar ibn Abdul Aziz and the Unclaimed Zakat',
+                era: 'Umayyad Era • Economic Justice',
+                excerpt: 'Through two years of transparent governance and justice, prosperity became so widespread that Zakat collectors could find no poor citizens left to receive funds.',
+                content: [
+                    'Upon becoming Caliph, Umar ibn Abdul Aziz returned unjust wealth to the public treasury, lived with modest simplicity, and appointed governors solely on merit and integrity.',
+                    'Within just over two years, poverty declined so dramatically across North Africa and the Levant that officials wrote asking what to do with surplus Zakat funds.',
+                    'He ordered the funds used to pay off honest debtors and assist young people in marriage.'
+                ],
+                moral: 'When leaders fear Allah and govern with honesty, prosperity flourishes across society.'
+            },
+
+            // ================= URDU STORIES (35 - 67) =================
+            {
+                id: 35,
+                lang: 'urdu',
+                category: 'Prophets',
+                title: 'حضرت نوح علیہ السلام اور صبر کی کشتی',
+                era: 'سورہ ہود • صبر و استقامت',
+                excerpt: 'ساڑھے نو سو برس تک حضرت نوح علیہ السلام نے اپنی قوم کو حق کی دعوت دی اور خشک زمین پر اللہ کے حکم سے کشتی تیار کی۔',
+                content: [
+                    'حضرت نوح علیہ السلام نے ساڑھے نو سو سال تک نہایت شفقت اور صبر کے ساتھ اپنی قوم کو توحید کی دعوت دی۔ سرداروں کے تمسخر اور انکار کے باوجود آپ نے ہمت نہ ہاری۔',
+                    'اللہ تعالیٰ کے حکم پر آپ نے خشک میدان میں ایک عظیم الشان کشتی بنانا شروع کی۔ لوگ ہنستے تھے مگر آپ یقینِ کامل کے ساتھ مصروف رہے۔',
+                    'جب طوفان برپا ہوا تو اللہ نے ایمان والوں اور ہر جاندار کے جوڑوں کو اس کشتی میں محفوظ رکھا اور صبر کا پھل عطا فرمایا۔'
+                ],
+                moral: 'اللہ کے حکم پر صبر اور استقامت اختیار کرنے والے ہر طوفان سے محفوظ رہتے ہیں۔'
+            },
+            {
+                id: 36,
+                lang: 'urdu',
+                category: 'Prophets',
+                title: 'حضرت ابراہیم علیہ السلام اور گلزار بنتی آگ',
+                era: 'سورہ الانبیاء • توکل علی اللہ',
+                excerpt: 'جب حضرت ابراہیم علیہ السلام کو دہکتی آگ میں ڈالا گیا تو اللہ کے حکم سے آگ ٹھنڈی اور سلامتی والی بن گئی۔',
+                content: [
+                    'نوجوانی میں حضرت ابراہیم علیہ السلام نے اپنی قوم پر واضح کیا کہ بے جان بت نہ سن سکتے ہیں نہ نفع و نقصان دے سکتے ہیں۔ اس پر ظالم بادشاہ نمرود نے ایک عظیم الاؤ جلانے کا حکم دیا۔',
+                    'جب آپ کو آگ میں پھینکا گیا تو آپ کی زبان پر حسبنا اللہ ونعم الوکیل جاری تھا۔ اللہ تعالیٰ نے آگ کو حکم دیا: اے آگ! ابراہیم پر ٹھنڈی اور سلامتی والی ہو جا۔',
+                    'سب دیکھنے والے حیران رہ گئے کہ آگ نے آپ کو ذرا بھی نقصان نہ پہنچایا۔'
+                ],
+                moral: 'سچا توکل انسان کو دنیا کی بڑی سے بڑی آزمائش میں بھی بے خوف کر دیتا ہے۔'
+            },
+            {
+                id: 37,
+                lang: 'urdu',
+                category: 'Prophets',
+                title: 'حضرت یوسف علیہ السلام اور اختیار کے باوجود معافی',
+                era: 'سورہ یوسف • عفو و درگزر',
+                excerpt: 'کنویں اور قید کی آزمائشوں کے بعد جب حضرت یوسف علیہ السلام مصر کے خزانوں کے امین بنے تو اپنے بھائیوں کو مکمل معاف فرما دیا۔',
+                content: [
+                    'بچپن میں کنویں میں ڈالے جانے اور بے گناہ قید کاٹنے کے باوجود حضرت یوسف علیہ السلام نے ہر حال میں صبر اور شکر کا دامن تھامے رکھا۔',
+                    'جب اللہ نے آپ کو مصر کا اقتدار عطا فرمایا اور قحط کے دنوں میں آپ کے بھائی غلہ لینے آئے اور حقیقت پہچانی تو وہ ندامت سے لرز اٹھے۔',
+                    'آپ نے انتقام کے بجائے فرمایا: آج تم پر کوئی ملامت نہیں، اللہ تمہیں معاف فرمائے، وہ سب سے بڑھ کر رحم فرمانے والا ہے۔'
+                ],
+                moral: 'اصل بڑائی یہ ہے کہ بدلہ لینے کی طاقت رکھنے کے باوجود انسان معاف کر دے۔'
+            },
+            {
+                id: 38,
+                lang: 'urdu',
+                category: 'Prophets',
+                title: 'حضرت یونس علیہ السلام اور اندھیروں میں دعا',
+                era: 'سورہ الانبیاء • سچی توبہ',
+                excerpt: 'سمندر کی تہہ میں مچھلی کے پیٹ کے اندر حضرت یونس علیہ السلام کی پکار نے رحمت کے دروازے کھول دیے۔',
+                content: [
+                    'طوفانی سمندر میں بڑی مچھلی کے نگل لینے کے بعد حضرت یونس علیہ السلام تین تہہ در تہہ اندھیروں میں گھر گئے: رات کا اندھیرا، سمندر کی گہرائی اور مچھلی کا پیٹ۔',
+                    'اس بے بسی میں آپ نے نہایت عاجزی سے پکارا: لا الہ الا انت سبحانک انی کنت من الظالمین۔',
+                    'اللہ تعالیٰ نے فوراً آپ کی دعا قبول فرمائی اور آپ کو سلامتی کے ساتھ ساحل پر پہنچا دیا۔'
+                ],
+                moral: 'مایوسی کے گہرے اندھیروں میں بھی سچی توبہ اور تسبیح نجات کا راستہ کھول دیتی ہے۔'
+            },
+            {
+                id: 39,
+                lang: 'urdu',
+                category: 'Prophets',
+                title: 'حضرت موسیٰ علیہ السلام اور سمندر کا راستہ',
+                era: 'سورہ الشعراء • اللہ پر یقین',
+                excerpt: 'پیچھے فرعون کا لشکر اور آگے ٹھاٹھیں مارتا سمندر—حضرت موسیٰ علیہ السلام نے یقین سے فرمایا: میرے ساتھ میرا رب ہے، وہ ضرور راستہ دکھائے گا۔',
+                content: [
+                    'جب فرعون کا لشکر قریب آ پہنچا اور سامنے بحیرہ احمر موجزن تھا تو بنی اسرائیل گھبرا اٹھے۔',
+                    'حضرت موسیٰ علیہ السلام نے کامل یقین سے فرمایا: ہرگز نہیں! بے شک میرے ساتھ میرا رب ہے، وہ مجھے ضرور راہ دکھائے گا۔',
+                    'اللہ کے حکم سے آپ نے عصا مارا تو سمندر پھٹ گیا اور درمیان میں خشک راستہ بن گیا۔'
+                ],
+                moral: 'جب ظاہری اسباب ختم ہو جائیں تب بھی اللہ پر یقین ناممکن کو ممکن بنا دیتا ہے۔'
+            },
+            {
+                id: 40,
+                lang: 'urdu',
+                category: 'Prophets',
+                title: 'حضرت سلیمان علیہ السلام اور ننھی چیونٹی',
+                era: 'سورہ النمل • عاجزی اور رحم دلی',
+                excerpt: 'عظیم لشکر کی قیادت کرتے ہوئے حضرت سلیمان علیہ السلام نے ایک ننھی چیونٹی کی آواز سنی، مسکرائے اور اللہ کا شکر ادا کیا۔',
+                content: [
+                    'جب حضرت سلیمان علیہ السلام کا لشکر وادی نمل سے گزر رہا تھا تو ایک چیونٹی نے اپنی ساتھیوں کو بلوں میں جانے کو کہا تاکہ لشکر کے قدموں تلے کچلی نہ جائیں۔',
+                    'اللہ نے آپ کو جانوروں کی بولی سمجھنے کی نعمت دی تھی؛ آپ مسکرائے، لشکر کو ٹھہرایا اور اللہ کے حضور شکر گزاری کی دعا مانگی۔'
+                ],
+                moral: 'حقیقی عظمت مخلوقِ خدا کی چھوٹی سے چھوٹی جان پر بھی رحم کرنے میں ہے۔'
+            },
+            {
+                id: 41,
+                lang: 'urdu',
+                category: 'Prophets',
+                title: 'حضرت ایوب علیہ السلام اور شکر گزار صبر',
+                era: 'سورہ ص • آزمائش میں ثابت قدمی',
+                excerpt: 'برسوں کی بیماری اور آزمائش کے باوجود حضرت ایوب علیہ السلام کی زبان پر شکوہ کے بجائے ہمیشہ اللہ کی حمد جاری رہی۔',
+                content: [
+                    'حضرت ایوب علیہ السلام کو مال، اولاد اور صحت کی سخت آزمائشوں سے گزارا گیا مگر آپ نے کبھی شکوہ نہ کیا۔',
+                    'جب آپ نے نہایت ادب سے عرض کی کہ مجھے تکلیف پہنچی ہے اور تو سب رحم کرنے والوں سے بڑھ کر رحم والا ہے، تو اللہ نے زمین پر پاؤں مارنے کا حکم دیا۔',
+                    'ٹھنڈے چشمے سے آپ کو مکمل شفا ملی اور تمام نعمتیں دوگنی عطا ہوئیں۔'
+                ],
+                moral: 'بے شکوہ صبر ہر تکلیف کو دوگنی رحمتوں کا پیش خیمہ بنا دیتا ہے۔'
+            },
+            {
+                id: 42,
+                lang: 'urdu',
+                category: 'Prophets',
+                title: 'حضرت اسماعیل علیہ السلام اور آبِ زمزم',
+                era: 'تاریخِ مکہ • توکل اور جدوجہد',
+                excerpt: 'بے آب و گیاہ وادی میں حضرت ہاجرہ کے توکل اور سعی کے نتیجے میں ننھے اسماعیل کے قدموں تلے زمزم کا چشمہ پھوٹ پڑا۔',
+                content: [
+                    'جب حضرت ہاجرہ نے جانا کہ انہیں مکہ کی ویران وادی میں چھوڑنا اللہ کا حکم ہے تو فرمایا: پھر اللہ ہمیں ہرگز ضائع نہیں کرے گا۔',
+                    'پانی کی تلاش میں صفا اور مروہ کے درمیان سات چکر لگانے کے بعد اللہ کی رحمت جوش میں آئی اور حضرت جبریل کے پر مارنے سے زمزم کا چشمہ جاری ہو گیا۔'
+                ],
+                moral: 'اللہ پر بھروسہ اور مخلصانہ کوشش بنجر زمین سے بھی چشمے جاری کر دیتی ہے۔'
+            },
+            {
+                id: 43,
+                lang: 'urdu',
+                category: 'Prophets',
+                title: 'طائف کے بازار میں رحمتِ عالم ﷺ کی دعا',
+                era: 'سیرتِ نبوی ﷺ • بے مثال شفقت',
+                excerpt: 'پتھروں سے لہولہان ہونے کے باوجود نبی کریم ﷺ نے اہلِ طائف کے لیے بددعا کے بجائے ہدایت کی دعا فرمائی۔',
+                content: [
+                    'طائف کے سفر میں سخت تکلیف اور نعلین مبارک خون سے تر ہو جانے کے باوجود جب پہاڑوں کے فرشتے نے بستی کو تباہ کرنے کی اجازت چاہی تو آپ ﷺ نے منع فرما دیا۔',
+                    'فرمایا: مجھے امید ہے کہ اللہ ان کی نسلوں سے ایسے لوگ پیدا فرمائے گا جو صرف ایک اللہ کی عبادت کریں گے۔'
+                ],
+                moral: 'سچی رحم دلی وہ ہے جو تکلیف دینے والوں کے لیے بھی بھلائی چاہے۔'
+            },
+            {
+                id: 44,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'غارِ ثور میں حضرت ابوبکر صدیقؓ کی رفاقت',
+                era: 'ہجرتِ مدینہ • وفاداری و یقین',
+                excerpt: 'دشمنوں کے قدم غار کے دہانے پر تھے اور رسول اللہ ﷺ نے تسلی دی: غم نہ کرو، بے شک اللہ ہمارے ساتھ ہے۔',
+                content: [
+                    'ہجرت کی رات حضرت ابوبکر صدیقؓ نے غارِ ثور کے تمام سوراخ بند کیے تاکہ رسول اللہ ﷺ آرام فرما سکیں۔',
+                    'جب دشمن غار کے بالکل باہر آ کھڑے ہوئے تو آپ ﷺ نے فرمایا: ان دو کے بارے میں تمہارا کیا خیال ہے جن کے ساتھ تیسرا اللہ ہے۔'
+                ],
+                moral: 'ایمان کی رفاقت ہر خوف کو اطمینان میں بدل دیتی ہے۔'
+            },
+            {
+                id: 45,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'حضرت عمر فاروقؓ اور بھوکے بچوں کی ہانڈی',
+                era: 'خلافتِ راشدہ • خدمتِ خلق',
+                excerpt: 'رات کے گشت میں خلیفہ وقت حضرت عمرؓ نے خود بیت المال سے آٹا اٹھایا اور بھوکے بچوں کے لیے کھانا پکایا۔',
+                content: [
+                    'مدینہ کی گلیوں میں رات کو گشت کرتے ہوئے حضرت عمرؓ نے ایک ماں کو دیکھا جو بلکتے بچوں کو بہلانے کے لیے خالی پانی اور کنکریاں ابال رہی تھی۔',
+                    'آپؓ فوراً بیت المال گئے، خود کندھے پر آٹا اور گھی اٹھا کر لائے اور اپنے ہاتھوں سے چولہا پھونک کر کھانا تیار کیا۔'
+                ],
+                moral: 'اسلامی حکمرانی اختیار نہیں بلکہ خلقِ خدا کی بے لوث خدمت کا نام ہے۔'
+            },
+            {
+                id: 46,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'حضرت عثمان غنیؓ اور بئرِ رومہ کا وقف',
+                era: 'مدینہ منورہ • سخاوت',
+                excerpt: 'مہاجرین کی پیاس بجھانے کے لیے حضرت عثمانؓ نے میٹھے پانی کا کنواں خرید کر ہمیشہ کے لیے وقف کر دیا۔',
+                content: [
+                    'مدینہ ہجرت کے بعد میٹھے پانی کی قلت تھی اور بئرِ رومہ کا مالک مہنگے داموں پانی بیچتا تھا۔',
+                    'نبی کریم ﷺ کی بشارت سن کر حضرت عثمان غنیؓ نے پورا کنواں خریدا اور امیر و غریب سب کے لیے مفت وقف کر دیا۔'
+                ],
+                moral: 'دولت کی اصل برکت دوسروں کی تکلیف دور کرنے میں ہے۔'
+            },
+            {
+                id: 47,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'حضرت علیؓ اور قاضی شریح کی عدالت',
+                era: 'عدل و انصاف • قانون کی بالادستی',
+                excerpt: 'خلیفہ وقت ہونے کے باوجود حضرت علیؓ ایک عام شہری کے ساتھ عدالت میں کھڑے ہوئے اور فیصلہ بخوشی قبول کیا۔',
+                content: [
+                    'اپنی گمشدہ زرہ ایک شہری کے پاس دیکھ کر حضرت علیؓ نے طاقت کے بجائے قاضی شریح کی عدالت سے رجوع کیا۔',
+                    'دو گواہ پیش نہ کر سکنے پر قاضی نے شہری کے حق میں فیصلہ دیا۔ اس بے مثال عدل سے متاثر ہو کر اس شہری نے زرہ واپس کر دی اور اسلام قبول کر لیا۔'
+                ],
+                moral: 'بے لاگ انصاف دلوں کو فتح کر لیتا ہے۔'
+            },
+            {
+                id: 48,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'حضرت بلال حبشیؓ اور احد احد کی صدا',
+                era: 'مکہ مکرمہ • استقامت',
+                excerpt: 'تپتی ریت اور سینے پر بھاری پتھر کے باوجود حضرت بلالؓ کی زبان پر صرف احد احد جاری رہا۔',
+                content: [
+                    'مکہ کی تپتی دوپہر میں سخت ظلم سہنے کے باوجود حضرت بلالؓ ایمان سے نہ ہٹے اور احد احد پکارتے رہے۔',
+                    'آزادی کے بعد اللہ نے انہیں اسلام کا پہلا مؤذن ہونے کا شرف بخشا۔'
+                ],
+                moral: 'سچا ایمان کسی ظلم کے آگے نہیں جھکتا۔'
+            },
+            {
+                id: 49,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'ام المؤمنین حضرت خدیجہؓ کی دانائی اور تسلی',
+                era: 'غارِ حرا • پہلی وحی',
+                excerpt: 'پہلی وحی کے نزول پر حضرت خدیجہؓ نے نبی کریم ﷺ کو تسلی دی اور آپ کے اخلاقِ حسنہ کی گواہی دی۔',
+                content: [
+                    'غارِ حرا سے واپسی پر حضرت خدیجہؓ نے فرمایا: اللہ کی قسم! اللہ آپ کو کبھی رسوا نہیں کرے گا، آپ صلہ رحمی کرتے ہیں، بے سہاروں کا بوجھ اٹھاتے ہیں اور مہمان نوازی کرتے ہیں۔'
+                ],
+                moral: 'نیک اور دانا رفیقِ حیات کٹھن لمحات میں سب سے بڑا سہارا ہوتا ہے۔'
+            },
+            {
+                id: 50,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'حضرت سلمان فارسیؓ کی تلاشِ حق',
+                era: 'فارس سے مدینہ • علم و جستجو',
+                excerpt: 'گھر بار اور آسائشیں چھوڑ کر حضرت سلمان فارسیؓ برسوں حق کی تلاش میں سفر کرتے رہے یہاں تک کہ مدینہ پہنچے۔',
+                content: [
+                    'سچائی کی پیاس نے حضرت سلمان فارسیؓ کو وطن سے دور کر دیا۔ غلامی اور مشقت سہنے کے باوجود انہوں نے آخری نبی ﷺ کی نشانیوں کو پہچان لیا اور خندق کھودنے کا تاریخی مشورہ دیا۔'
+                ],
+                moral: 'جو سچے دل سے حق تلاش کرتا ہے اللہ اسے ضرور منزل تک پہنچاتا ہے۔'
+            },
+            {
+                id: 51,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'حضرت سمیہؓ — اسلام کی پہلی شہید',
+                era: 'مکہ مکرمہ • جرات و ایمان',
+                excerpt: 'ضعیف العمری کے باوجود حضرت سمیہؓ نے ایمان پر سمجھوتہ نہ کیا اور اسلام کی پہلی شہید کہلائیں۔',
+                content: [
+                    'ابتدائی دورِ اسلام میں بے پناہ مظالم سہتے ہوئے حضرت سمیہؓ اور ان کے خاندان کو نبی کریم ﷺ نے صبر اور جنت کی بشارت دی۔'
+                ],
+                moral: 'ایمان کی طاقت جسمانی کمزوری پر ہمیشہ غالب رہتی ہے۔'
+            },
+            {
+                id: 52,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'حضرت صہیب رومیؓ کی نفع بخش تجارت',
+                era: 'ہجرتِ مدینہ • ایثار',
+                excerpt: 'مدینہ ہجرت کے وقت حضرت صہیب رومیؓ نے اپنا سارا مال مکہ والوں کے حوالے کر کے ایمان کا راستہ چنا۔',
+                content: [
+                    'جب آپ خالی ہاتھ مدینہ پہنچے تو نبی کریم ﷺ نے خوش ہو کر فرمایا: اے ابو یحییٰ! تمہاری تجارت نفع بخش رہی۔'
+                ],
+                moral: 'اللہ کی رضا کے لیے دنیا قربان کرنا ہمیشہ فائدے کا سودا ہے۔'
+            },
+            {
+                id: 53,
+                lang: 'urdu',
+                category: 'Sahaba',
+                title: 'حضرت مصعب بن عمیرؓ — اسلام کے پہلے سفیر',
+                era: 'مدینہ منورہ • نرم گفتاری',
+                excerpt: 'ریشمی لباس چھوڑ کر سادہ زندگی اپنانے والے حضرت مصعبؓ نے اپنے اخلاق اور تلاوتِ قرآن سے مدینہ کے دل جیت لیے۔',
+                content: [
+                    'نرم لہجے اور حکمت کے ساتھ دعوت دینے کی بدولت ایک ہی سال میں مدینہ کے گھر گھر میں اسلام کی روشنی پھیل گئی۔'
+                ],
+                moral: 'نرم گفتاری اور حسنِ اخلاق بند دروازوں کو بھی کھول دیتے ہیں۔'
+            },
+            {
+                id: 54,
+                lang: 'urdu',
+                category: 'Wisdom',
+                title: 'اصحابِ کہف کا ایمان افروز واقعہ',
+                era: 'سورہ الکہف • نوجوانوں کا ایمان',
+                excerpt: 'ایمان بچانے کے لیے چند نوجوانوں نے غار میں پناہ لی اور اللہ نے انہیں تین سو نو برس تک محفوظ سلائے رکھا۔',
+                content: [
+                    'ظالم بادشاہ کے شرک سے بچنے کے لیے جب نوجوانوں نے غار میں پناہ لی اور رحمت کی دعا مانگی تو اللہ نے صدیوں تک ان کی حفاظت فرمائی۔'
+                ],
+                moral: 'ایمان کی حفاظت کے لیے اٹھنے والے قدموں کی حفاظت اللہ خود فرماتا ہے۔'
+            },
+            {
+                id: 55,
+                lang: 'urdu',
+                category: 'Wisdom',
+                title: 'حضرت لقمان حکیم کی اپنے بیٹے کو نصیحتیں',
+                era: 'سورہ لقمان • تربیت و اخلاق',
+                excerpt: 'قرآن میں محفوظ حضرت لقمان کی نصیحتیں شکر گزاری، نماز، عاجزی اور دھیمی آواز میں گفتگو کا درس دیتی ہیں۔',
+                content: [
+                    'حضرت لقمان نے اپنے بیٹے کو نصیحت کی کہ اللہ کے ساتھ کسی کو شریک نہ ٹھہرانا، نماز قائم کرنا، لوگوں سے تکبر سے منہ نہ موڑنا اور میانہ روی سے چلنا۔'
+                ],
+                moral: 'اصل حکمت اللہ کی فرمانبرداری اور مخلوق کے ساتھ عاجزی ہے۔'
+            },
+            {
+                id: 56,
+                lang: 'urdu',
+                category: 'Wisdom',
+                title: 'دو باغوں والے شخص کا غرور اور انجام',
+                era: 'سورہ الکہف • شکر اور تکبر',
+                excerpt: 'اپنے سرسبز باغات پر غرور کرنے والے شخص نے ماشاءاللہ نہ کہا اور صبح اٹھا تو سب کچھ اجڑ چکا تھا۔',
+                content: [
+                    'نیک ساتھی نے اسے سمجھایا کہ باغ میں داخل ہوتے وقت ماشاءاللہ لا قوۃ الا باللہ کہو، مگر تکبر کی وجہ سے اس کی نعمت چھن گئی۔'
+                ],
+                moral: 'شکر گزاری نعمتوں کو باقی رکھتی ہے جبکہ تکبر انہیں مٹا دیتا ہے۔'
+            },
+            {
+                id: 57,
+                lang: 'urdu',
+                category: 'Wisdom',
+                title: 'پیاسے کتے کو پانی پلانے والے مسافر کی مغفرت',
+                era: 'صحیح حدیث • جانوروں پر رحم',
+                excerpt: 'کنویں میں اتر کر اپنے موزے میں پانی بھر کر پیاسے کتے کو پلانے پر اللہ نے ایک مسافر کی مغفرت فرما دی۔',
+                content: [
+                    'نبی کریم ﷺ نے فرمایا کہ ہر جاندار کے ساتھ بھلائی کرنے میں اجر و ثواب ہے۔'
+                ],
+                moral: 'کسی بھی مخلوق پر کیا گیا رحم اللہ کے ہاں کبھی ضائع نہیں جاتا۔'
+            },
+            {
+                id: 58,
+                lang: 'urdu',
+                category: 'Wisdom',
+                title: 'غار میں پھنسے تین مسافروں کے خالص اعمال',
+                era: 'صحیح حدیث • اخلاصِ نیت',
+                excerpt: 'چٹان گرنے سے غار میں بند تین مسافروں نے اپنے خالص نیک اعمال کے وسیلے سے دعا کی اور چٹان سرک گئی۔',
+                content: [
+                    'والدین کی خدمت، گناہ سے بچنے اور مزدور کی امانت بڑھانے کے خالص اعمال نے مصیبت کی گھڑی میں نجات دلائی۔'
+                ],
+                moral: 'خالص نیت سے کیے گئے اعمال مشکل وقت میں ڈھال بن جاتے ہیں۔'
+            },
+            {
+                id: 59,
+                lang: 'urdu',
+                category: 'Wisdom',
+                title: 'برص والے، گنجے اور نابینا شخص کا امتحان',
+                era: 'صحیح حدیث • شکر کا امتحان',
+                excerpt: 'شفا اور دولت ملنے کے بعد جب امتحان لیا گیا تو صرف نابینا شخص نے اپنی سابقہ حالت کا اعتراف کیا اور خیرات کی۔',
+                content: [
+                    'شکر گزاری کی بدولت تیسرے شخص کی نعمتیں باقی رہیں جبکہ ناشکری کرنے والوں سے نعمتیں واپس لے لی گئیں۔'
+                ],
+                moral: 'اپنے ماضی کو نہ بھولیں اور اللہ کی دی ہوئی نعمتوں میں سے کھلے دل سے خرچ کریں۔'
+            },
+            {
+                id: 60,
+                lang: 'urdu',
+                category: 'Wisdom',
+                title: 'زمین میں دفن سونا واپس کرنے والے دیانت دار لوگ',
+                era: 'صحیح حدیث • امانت و دیانت',
+                excerpt: 'خریدی ہوئی زمین سے سونے کا مٹکا نکلنے پر خریدار اور بیچنے والے دونوں نے دوسرے کا حق سمجھ کر لینے سے انکار کر دیا۔',
+                content: [
+                    'آخرکار ایک دانا منصف نے دونوں کے بچوں کا نکاح کروا کر وہ سونا ان کی بھلائی اور صدقہ میں خرچ کرنے کا مشورہ دیا۔'
+                ],
+                moral: 'معاملات میں دیانت داری معاشرے میں برکت اور محبت پیدا کرتی ہے۔'
+            },
+            {
+                id: 61,
+                lang: 'urdu',
+                category: 'Wisdom',
+                title: 'ایک خاص باغ کو سیراب کرنے والا بادل',
+                era: 'صحیح مسلم • پوشیدہ صدقہ',
+                excerpt: 'آسمان سے آواز آئی کہ فلاں شخص کے باغ کو سیراب کرو، کیونکہ وہ اپنی پیداوار کا ایک تہائی صدقہ کرتا تھا۔',
+                content: [
+                    'کسان اپنی آمدنی کے تین حصے کرتا: ایک حصہ صدقہ، ایک اہل و عیال کے لیے اور ایک دوبارہ کھیتی باڑی کے لیے۔'
+                ],
+                moral: 'پابندی سے صدقہ دینے والوں کے رزق میں آسمان سے برکت اترتی ہے۔'
+            },
+            {
+                id: 62,
+                lang: 'urdu',
+                category: 'History',
+                title: 'حضرت اویس قرنیؒ اور ماں کی خدمت کا مقام',
+                era: 'تابعین • والدین کی خدمت',
+                excerpt: 'ضعیف والدہ کی خدمت کی خاطر مدینہ نہ جا سکنے والے حضرت اویس قرنیؒ کا تذکرہ خود نبی کریم ﷺ نے فرمایا۔',
+                content: [
+                    'زمین پر گمنام رہنے والے اویس قرنیؒ والدہ کی خدمت کی بدولت آسمان والوں میں مشہور تھے۔'
+                ],
+                moral: 'والدین کی خدمت انسان کو بلند ترین روحانی درجات تک پہنچا دیتی ہے۔'
+            },
+            {
+                id: 63,
+                lang: 'urdu',
+                category: 'History',
+                title: 'امام بخاریؒ اور ایک حدیث کے لیے طویل سفر',
+                era: 'علمِ حدیث • دیانت و تحقیق',
+                excerpt: 'جب امام بخاریؒ نے ایک راوی کو خالی کپڑا دکھا کر گھوڑے کو دھوکہ دیتے دیکھا تو اس سے حدیث لیے بغیر واپس لوٹ آئے۔',
+                content: [
+                    'آپ نے فرمایا کہ جو شخص جانور سے سچ نہیں بول سکتا وہ رسول اللہ ﷺ کی حدیث بیان کرنے کا امین نہیں ہو سکتا۔'
+                ],
+                moral: 'سچائی ہر چھوٹے بڑے معاملے میں یکساں ہونی چاہیے۔'
+            },
+            {
+                id: 64,
+                lang: 'urdu',
+                category: 'History',
+                title: 'فاطمہ الفہری اور جامعہ القرویین کا قیام',
+                era: '۸۵۹ء • فاس، مراکش • علم کی شمع',
+                excerpt: 'اپنی وراثت سے فاطمہ الفہری نے مراکش کے شہر فاس میں جامعہ القرویین قائم کی جو آج دنیا کی قدیم ترین جامعہ ہے۔',
+                content: [
+                    'تعمیر کے دوران مسلسل روزے رکھ کر انہوں نے علم و حکمت کا ایسا مرکز قائم کیا جس سے صدیوں تک دنیا فیض یاب ہوئی۔'
+                ],
+                moral: 'علم کی اشاعت پر خرچ کیا گیا مال صدقہ جاریہ بن کر صدیوں زندہ رہتا ہے۔'
+            },
+            {
+                id: 65,
+                lang: 'urdu',
+                category: 'History',
+                title: 'سلطان صلاح الدین ایوبیؒ اور فتحِ بیت المقدس کا رحم',
+                era: '۱۱۸۷ء • اخلاقِ جنگ',
+                excerpt: 'بیت المقدس فتح کرنے کے بعد سلطان صلاح الدین ایوبیؒ نے انتقام کے بجائے عام معافی دی اور غریب قیدیوں کا فدیہ خود ادا کیا۔',
+                content: [
+                    'آپ کے حسنِ سلوک اور عدل نے دوستوں کے ساتھ دشمنوں کو بھی متاثر کر دیا۔'
+                ],
+                moral: 'اصل فتح طاقت سے نہیں بلکہ رحم اور اعلیٰ ظرفی سے حاصل ہوتی ہے۔'
+            },
+            {
+                id: 66,
+                lang: 'urdu',
+                category: 'History',
+                title: 'امام احمد بن حنبلؒ اور نانبائی کا استغفار',
+                era: 'بغداد • استغفار کی برکت',
+                excerpt: 'کثرتِ استغفار کی برکت سے نانبائی کی ہر دعا قبول ہوئی سوائے ایک خواہش کے—اور وہ تھی امام احمد بن حنبلؒ سے ملاقات۔',
+                content: [
+                    'امام احمدؒ نے مسکرا کر فرمایا: اللہ تعالیٰ مجھے خود سفر کروا کر تمہارے دروازے تک لے آیا ہے۔'
+                ],
+                moral: 'کثرت سے استغفار ناممکن خواہشوں کو بھی پورا کر دیتا ہے۔'
+            },
+            {
+                id: 67,
+                lang: 'urdu',
+                category: 'History',
+                title: 'حضرت عمر بن عبدالعزیزؒ کا عادلانہ دور',
+                era: 'خلافتِ بنو امیہ • معاشی عدل',
+                excerpt: 'دو برس کے عادلانہ نظام کی بدولت خوشحالی اس قدر بڑھی کہ زکوٰۃ لینے والا کوئی مستحق باقی نہ رہا۔',
+                content: [
+                    'حکمرانوں کی دیانت اور سادگی سے پورے معاشرے میں امن و خوشحالی عام ہو گئی۔'
+                ],
+                moral: 'جب حکمران اللہ سے ڈرنے والے ہوں تو پوری قوم خوشحال ہو جاتی ہے۔'
+            },
+
+            // ================= ARABIC STORIES (68 - 100) =================
+            {
+                id: 68,
+                lang: 'arabic',
+                category: 'Prophets',
+                title: 'نبي الله نوح عليه السلام وسفينة الصبر',
+                era: 'سورة هود • الصبر والثبات',
+                excerpt: 'دعا نبي الله نوح عليه السلام قومه تسعمائة وخمسين عاماً بصبرٍ جميل، وصنع السفينة في اليابسة يقيناً بوعد الله.',
+                content: [
+                    'لبث نبي الله نوح عليه السلام في قومه ألف سنة إلا خمسين عاماً يدعوهم إلى توحيد الله بالحكمة والموعظة، فلم يزده استهزاؤهم إلا ثباتاً وإخلاصاً.',
+                    'وأمره الله بصنع الفلك في أرض يابسة بعيدة عن البحر، فكان يمر به الملأ ويسخرون منه، وهو ماضٍ في طاعة ربه بكل يقين.',
+                    'فلما جاء أمر الله وفار التنور، نجّى الله نوحاً ومن آمن معه في السفينة وجعلهم آية للعالمين.'
+                ],
+                moral: 'العاقبة للمتقين الصابرين مهما طال طريق الدعوة والابتلاء.'
+            },
+            {
+                id: 69,
+                lang: 'arabic',
+                category: 'Prophets',
+                title: 'نبي الله إبراهيم عليه السلام والنار البرد والسلام',
+                era: 'سورة الأنبياء • التوكل على الله',
+                excerpt: 'حين أُلقي الخليل إبراهيم عليه السلام في النار المتأججة قال: حسبنا الله ونعم الوكيل، فجعلها الله برداً وسلاماً.',
+                content: [
+                    'أقام إبراهيم عليه السلام الحجة على قومه بأن الأصنام لا تملك نفعاً ولا ضراً، فأوقدوا له ناراً عظيمة وألقوه فيها بالمنجنيق.',
+                    'وفي لحظة السقوط فوض أمره إلى ربه قائلاً: حسبنا الله ونعم الوكيل، فأصدر الله أمره الكوني: ﴿قُلْنَا يَا نَارُ كُونِي بَرْدًا وَسَلَامًا عَلَىٰ إِبْرَاهِيمَ﴾.',
+                    'فخرج منها سالماً لم تمسسه النار بسوء إلا أن أحرقت وثاقه.'
+                ],
+                moral: 'من توكل على الله حق التوكل كفاه الله كل شر وحول المحن إلى منح.'
+            },
+            {
+                id: 70,
+                lang: 'arabic',
+                category: 'Prophets',
+                title: 'نبي الله يوسف عليه السلام والعفو عند المقدرة',
+                era: 'سورة يوسف • التسامح والصفح',
+                excerpt: 'بعد البئر والسجن مكن الله ليوسف عليه السلام في أرض مصر، فقابل إخوته بالصفح الجميل والدعاء لهم بالمغفرة.',
+                content: [
+                    'مرّ نبي الله يوسف عليه السلام بابتلاءات متتالية من غياهب الجب إلى السجن ظلماً، فصبر وأحسن في كل موطن.',
+                    'ولما استقر على خزائن مصر وجاءه إخوته محتاجين ثم عرفوه، خافوا أن يعاقبهم على ما فعلوا به في صغره.',
+                    'فقال لهم بكل رحمة ونبل: ﴿لَا تَثْرِيبَ عَلَيْكُمُ الْيَوْمَ ۖ يَغْفِرُ اللَّهُ لَكُمْ ۖ وَهُوَ أَرْحَمُ الرَّاحِمِينَ﴾.'
+                ],
+                moral: 'قمة الأخلاق أن تعفو وتصفح وأنت في قمة القدرة والتمكين.'
+            },
+            {
+                id: 71,
+                lang: 'arabic',
+                category: 'Prophets',
+                title: 'نبي الله يونس عليه السلام ودعاء الظلمات',
+                era: 'سورة الأنبياء • التوبة والتسبيح',
+                excerpt: 'في ظلمات الليل والبحر وبطن الحوت نادى يونس عليه السلام ربه بتسبيح خالص فاستجاب الله له ونجاه.',
+                content: [
+                    'التقم الحوت نبي الله يونس عليه السلام في عرض البحر، فاجتمعت عليه ظلمة الليل وظلمة البحر وظلمة بطن الحوت.',
+                    'فنادى في الظلمات بقلب منكسر: ﴿لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ﴾.',
+                    'فاستجاب الله له في الحال ونجاه من الغم وأنبت عليه شجرة من يقطين تظلله وتغذيه.'
+                ],
+                moral: 'الاعتراف بالتقصير وتسبيح الله مفتاح الفرج في أشد الكربات.'
+            },
+            {
+                id: 72,
+                lang: 'arabic',
+                category: 'Prophets',
+                title: 'نبي الله موسى عليه السلام وانفلاق البحر',
+                era: 'سورة الشعراء • اليقين بالله',
+                excerpt: 'بين جيش فرعون والبحر المتلاطم قال موسى عليه السلام بيقين راسخ: ﴿كَلَّا ۖ إِنَّ مَعِيَ رَبِّي سَيَهْدِينِ﴾.',
+                content: [
+                    'أدرك فرعون وجنوده بني إسرائيل عند شاطئ البحر، فظن القوم أنهم مدركون ولا مفر لهم.',
+                    'فأجابهم نبي الله موسى عليه السلام بقلب مطمئن: كلا إن معي ربي سيهدين، فأوحى الله إليه أن اضرب بعصاك البحر.',
+                    'فانفلق البحر فكان كل فرق كالطود العظيم، وعبر المؤمنون آمنين.'
+                ],
+                moral: 'اليقين بمعية الله يفتح طرق النجاة حين تنسد جميع السبل.'
+            },
+            {
+                id: 73,
+                lang: 'arabic',
+                category: 'Prophets',
+                title: 'نبي الله سليمان عليه السلام والنملة الحكيمة',
+                era: 'سورة النمل • التواضع والرحمة',
+                excerpt: 'على رأس جيشه العظيم تبسم سليمان عليه السلام لقول نملة صغيرة وشكر الله على نعمه.',
+                content: [
+                    'مر نبي الله سليمان عليه السلام بجنوده من الجن والإنس والطير على وادي النمل، فنادت نملة قومها أن يدخلوا مساكنهم لئلا يحطمنهم الجيش دون شعور.',
+                    'فتبسم سليمان ضاحكاً من قولها وأمر جنده بالرفق، ثم رفع يديه داعياً الله أن يوزعه شكر نعمته وأن يعمل صالحاً يرضاه.'
+                ],
+                moral: 'الرفق بأصغر المخلوقات وشكر النعم من شيم الأنبياء والصالحين.'
+            },
+            {
+                id: 74,
+                lang: 'arabic',
+                category: 'Prophets',
+                title: 'نبي الله أيوب عليه السلام والصبر الجميل',
+                era: 'سورة ص • الثبات عند البلاء',
+                excerpt: 'ابتُلي أيوب عليه السلام في ماله وأهله وجسده سنين طويلة فما زاد على حمد الله والثناء عليه.',
+                content: [
+                    'ضرب نبي الله أيوب عليه السلام أروع الأمثلة في الصبر والرضا بقضاء الله، ثم ناجى ربه بأدب رفيع: ﴿أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ﴾.',
+                    'فأمره الله أن يضرب الأرض برجله فنبع ماء بارد اغتسل منه وشرب فعادت إليه صحته وأهله ومثلهم معهم.'
+                ],
+                moral: 'الصبر الجميل بلا جزع يفتح أبواب الرحمة والشفاء المضاعف.'
+            },
+            {
+                id: 75,
+                lang: 'arabic',
+                category: 'Prophets',
+                title: 'إسماعيل عليه السلام ونبع زمزم المبارك',
+                era: 'تاريخ مكة • التوكل والسعي',
+                excerpt: 'في وادٍ غير ذي زرع توكلت هاجر على الله وسعت بين الصفا والمروة فتفجر زمزم تحت قدمي إسماعيل.',
+                content: [
+                    'لما علمت هاجر أن تركها وطفلها إسماعيل في مكة هو أمر الله قالت بيقين: إذن لا يضيعنا الله.',
+                    'وبعد سعيها سبعة أشواط بين الصفا والمروة أرسل الله جبريل فضرب الأرض فانبجس ماء زمزم المبارك.'
+                ],
+                moral: 'الجمع بين حسن التوكل على الله والأخذ بالأسباب يجلب الرزق من حيث لا نحتسب.'
+            },
+            {
+                id: 76,
+                lang: 'arabic',
+                category: 'Prophets',
+                title: 'رحمة النبي ﷺ في الطائف',
+                era: 'السيرة النبوية • الرحمة المهداة',
+                excerpt: 'رغم الأذى الشديد في الطائف رفض النبي ﷺ أن تُطبق عليهم الأخشبان ودعا لأصلابهم بالهداية.',
+                content: [
+                    'عرض ملك الجبال على النبي ﷺ أن يطبق على أهل الطائف الجبلين بعد أن آذوه، فقال ﷺ: بل أرجو أن يخرج الله من أصلابهم من يعبد الله وحده لا يشرك به شيئاً.'
+                ],
+                moral: 'الرحمة الحقيقية تتسع حتى لمن أساء إلينا وتقابل الأذى بالدعاء.'
+            },
+            {
+                id: 77,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'أبو بكر الصديق رضي الله عنه في غار ثور',
+                era: 'الهجرة النبوية • الصحبة الصادقة',
+                excerpt: 'في قلب الغار طمأن النبي ﷺ صاحبه أبا بكر بقوله الخالد: ﴿لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا﴾.',
+                content: [
+                    'وقف المشركون على باب غار ثور، فهمس أبو بكر خوفاً على رسول الله ﷺ، فقال له النبي ﷺ: ما ظنك باثنين الله ثالثهما.'
+                ],
+                moral: 'الإيمان بمعية الله يملأ القلب طمأنينة في أحلك الظروف.'
+            },
+            {
+                id: 78,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'عمر بن الخطاب رضي الله عنه وأم الأيتام',
+                era: 'الخلافة الراشدة • مسؤولية الراعي',
+                excerpt: 'حمل أمير المؤمنين عمر رضي الله عنه الدقيق على ظهره ليلاً وأوقد النار بيده ليطعم أطفالاً جياعاً.',
+                content: [
+                    'رأى عمر رضي الله عنه امرأة تغلي الماء والحصى لتسكت أطفالها الجياع، فحمل الطعام بنفسه قائلاً لخادمه: أتحمل عني أوزاري يوم القيامة؟'
+                ],
+                moral: 'القيادة في الإسلام أمانة وتواضع وخدمة صادقة للناس.'
+            },
+            {
+                id: 79,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'عثمان بن عفان رضي الله عنه وبئر رومة',
+                era: 'المدينة المنورة • الجود والوقف',
+                excerpt: 'اشترى عثمان رضي الله عنه بئر رومة من ماله الخاص وجعلها وقفاً عذباً لجميع أهل المدينة.',
+                content: [
+                    'بشر النبي ﷺ بالجنة لمن يشتري بئر رومة ويجعل دلوه فيها كدلاء المسلمين، فبادر عثمان رضي الله عنه واشتراها كاملة ووقفها لله.'
+                ],
+                moral: 'الإنفاق في سبل النفع العام صدقة جارية لا ينقطع أجرها.'
+            },
+            {
+                id: 80,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'علي بن أبي طالب رضي الله عنه أمام القضاء',
+                era: 'العدل • المساواة أمام القانون',
+                excerpt: 'وقف الخليفة علي رضي الله عنه خصماً أمام القاضي شريح ورضي بالحكم حين لم يكتمل نصاب الشهادة.',
+                content: [
+                    'قضى شريح بالدرع للمواطن لعدم وجود شاهد ثانٍ مع علي رضي الله عنه، فأعجب الرجل بعدالة الإسلام فرد الدرع وأسلم.'
+                ],
+                moral: 'العدل يرفع شأن الحاكم ويهدي القلوب إلى الحق.'
+            },
+            {
+                id: 81,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'بلال بن رباح رضي الله عنه وصوت التوحيد',
+                era: 'مكة المكرمة • الثبات والعزة',
+                excerpt: 'تحت صخرة الرمضاء المحرقة لم يزد بلال رضي الله عنه على قول: أحدٌ أحد، فأعزه الله بالأذان.',
+                content: [
+                    'صبر بلال على التعذيب في مكة فكافأه الله بأن جعله أول مؤذن في الإسلام يصدح بالتوحيد من فوق الكعبة.'
+                ],
+                moral: 'ثبات القلب على الحق يرفع صاحبه إلى أعلى مراتب الكرامة.'
+            },
+            {
+                id: 82,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'خديجة بنت خويلد رضي الله عنها ومواساة الوحي',
+                era: 'غار حراء • الحكمة والوفاء',
+                excerpt: 'استقبلت أم المؤمنين خديجة النبي ﷺ بعد نزول الوحي بكلمات حكيمة تفيض ثقة بربه وبأخلاقه.',
+                content: [
+                    'قالت له رضي الله عنها: كلا والله ما يخزيك الله أبداً، إنك لتصل الرحم، وتحمل الكل، وتكسب المعدوم، وتقري الضيف، وتعين على نوائب الحق.'
+                ],
+                moral: 'الكلمة الطيبة والدعم الصادق عند الشدائد يثبتان القلوب.'
+            },
+            {
+                id: 83,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'سلمان الفارسي رضي الله عنه ورحلة البحث عن الحقيقة',
+                era: 'فارس إلى المدينة • طلب الحق',
+                excerpt: 'ترك سلمان الفارسي النعيم والأهل وجاب البلاد سنوات بحثاً عن الدين الحق حتى التقى بالنبي ﷺ.',
+                content: [
+                    'توج الله رحلته الطويلة بالإسلام والصحبة، وكان صاحب مشورة حفر الخندق التي حمت المدينة المنورة.'
+                ],
+                moral: 'من صدق في طلب الحق هداه الله إليه ولو بعد حين.'
+            },
+            {
+                id: 84,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'سمية بنت خياط رضي الله عنها — أول شهيدة في الإسلام',
+                era: 'مكة المكرمة • الشجاعة',
+                excerpt: 'رغم كبر سنها ثبتت سمية رضي الله عنها على إسلامها فكانت أول شهيدة في تاريخ الإسلام.',
+                content: [
+                    'مر النبي ﷺ بآل ياسر وهم يعذبون فقال لهم: صبراً آل ياسر فإن موعدكم الجنة.'
+                ],
+                moral: 'قوة الإيمان في القلب أعظم من كل قوة مادية.'
+            },
+            {
+                id: 85,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'صهيب الرومي رضي الله عنه والبيع الرابح',
+                era: 'الهجرة النبوية • إيثار الآخرة',
+                excerpt: 'تنازل صهيب الرومي عن ماله كله لقريش ليلحق بالنبي ﷺ في المدينة فقال له: ربح البيع أبا يحيى.',
+                content: [
+                    'آثر صهيب صحبة رسول الله ﷺ على كنوز الدنيا فأنزل الله فيه آية الرضا.'
+                ],
+                moral: 'من ترك شيئاً لله عوضه الله خيراً منه في الدنيا والآخرة.'
+            },
+            {
+                id: 86,
+                lang: 'arabic',
+                category: 'Sahaba',
+                title: 'مصعب بن عمير رضي الله عنه — أول سفير في الإسلام',
+                era: 'المدينة المنورة • الدعوة بالحكمة',
+                excerpt: 'ترك مصعب ترف مكة ونشر الإسلام في المدينة بحسن خلقه وتلاوته العذبة للقرآن.',
+                content: [
+                    'بأسلوبه الهادئ وحكمته دخل سادة المدينة في الإسلام قبل هجرة النبي ﷺ.'
+                ],
+                moral: 'الرفق وحسن البيان يفتحان القلوب المغلقة.'
+            },
+            {
+                id: 87,
+                lang: 'arabic',
+                category: 'Wisdom',
+                title: 'أصحاب الكهف وحفظ الله للشباب المؤمن',
+                era: 'سورة الكهف • الثبات على الدين',
+                excerpt: 'لجأ فتية مؤمنون إلى الكهف فراراً بدينهم فحفظهم الله نائمين ثلاثمائة وتسع سنين.',
+                content: [
+                    'دعوا ربهم قائلين: ﴿رَبَّنَا آتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا﴾، فجعل الله قصتهم آية خالدة.'
+                ],
+                moral: 'إذا اعتزل المؤمن الفتن لوجه الله تولى الله رعايته وحفظه.'
+            },
+            {
+                id: 88,
+                lang: 'arabic',
+                category: 'Wisdom',
+                title: 'وصايا لقمان الحكيم لابنه',
+                era: 'سورة لقمان • التربية والأدب',
+                excerpt: 'وصايا خالدة في القرآن تجمع بين التوحيد وبر الوالدين وإقامة الصلاة والتواضع وخفض الصوت.',
+                content: [
+                    'قال لقمان لابنه وهو يعظه: يا بني لا تشرك بالله، وأقم الصلاة، وأمر بالمعروف، واصبر على ما أصابك، ولا تصعر خدك للناس.'
+                ],
+                moral: 'الحكمة تجمع بين حسن الصلة بالله وحسن المعاملة مع الناس.'
+            },
+            {
+                id: 89,
+                lang: 'arabic',
+                category: 'Wisdom',
+                title: 'صاحب الجنتين والغرور بالنعمة',
+                era: 'سورة الكهف • الشكر والكبر',
+                excerpt: 'اغتر صاحب الجنتين بثماره ونسي أن يقول ما شاء الله، فأصبح بستانه خاوياً على عروشه.',
+                content: [
+                    'نصح له صاحبه المؤمن أن ينسب الفضل لله ويقول: ما شاء الله لا قوة إلا بالله، فلما استكبر زالت عنه النعمة.'
+                ],
+                moral: 'الشكر قيد النعم والغرور سبب زوالها.'
+            },
+            {
+                id: 90,
+                lang: 'arabic',
+                category: 'Wisdom',
+                title: 'الرجل الذي سقى كلباً فغفر الله له',
+                era: 'حديث صحيح • الرحمة بالحيوان',
+                excerpt: 'نزل مسافر إلى البئر وملأ خفه ماءً ليسقي كلباً يلهث من العطش فشكر الله له وغفر ذنوبه.',
+                content: [
+                    'قال النبي ﷺ: في كل كبد رطبة أجر، مبيناً عظم ثواب الرحمة بجميع المخلوقات.'
+                ],
+                moral: 'أبسط أعمال الرحمة قد تكون سبباً في مغفرة الذنوب.'
+            },
+            {
+                id: 91,
+                lang: 'arabic',
+                category: 'Wisdom',
+                title: 'أصحاب الغار والصخرة المنفرجة',
+                era: 'حديث صحيح • إخلاص العمل',
+                excerpt: 'انطبقت صخرة عظيمة على ثلاثة رجال في غار فتوسلوا إلى الله بأخلص أعمالهم فانفرجت الصخرة.',
+                content: [
+                    'بر الوالدين، والعفة عن الحرام، وحفظ أمانة الأجير كانت أعمالاً خالصة أنقذت أصحابها في ساعة الشدة.'
+                ],
+                moral: 'الأعمال الصالحة الخالصة ذخيرة تنجي صاحبها في الكربات.'
+            },
+            {
+                id: 92,
+                lang: 'arabic',
+                category: 'Wisdom',
+                title: 'الأبرص والأقرع والأعمى واختبار الشكر',
+                era: 'حديث صحيح • الاعتراف بفضل الله',
+                excerpt: 'بعد أن شفاهم الله وأغناهم، لم ينجح في اختبار العطاء إلا الأعمى الذي تذكر فضل الله وتصدق.',
+                content: [
+                    'قال الأعمى للملك السائل: قد كنت أعمى فرد الله إلي بصري، فخذ ما شئت ودع ما شئت، فبارك الله له في ماله.'
+                ],
+                moral: 'تذكر نعمة الله عليك يدفعك للجود ويحفظ عليك البركة.'
+            },
+            {
+                id: 93,
+                lang: 'arabic',
+                category: 'Wisdom',
+                title: 'الأمانة المتبادلة في جرة الذهب',
+                era: 'حديث صحيح • النزاهة والورع',
+                excerpt: 'اشترى رجل أرضاً فوجد فيها جرة ذهب، فأبى المشتري والبائع أخذها ورعاً وأمانة.',
+                content: [
+                    'حكم بينهما رجل حكيم بتزويج ابن أحدهما ابنة الآخر والإنفاق عليهما من الذهب والتصدق منه.'
+                ],
+                moral: 'الورع والأمانة يباركان في الرزق ويؤلفان بين القلوب.'
+            },
+            {
+                id: 94,
+                lang: 'arabic',
+                category: 'Wisdom',
+                title: 'السحابة المأمورة بسقي بستان المتصدق',
+                era: 'صحيح مسلم • بركة الصدقة',
+                excerpt: 'سمع رجل صوتاً في سحابة يقول: اسق حديقة فلان، فوجد صاحبها يقسم محصوله أثلاثاً ويتصدق بثلثه.',
+                content: [
+                    'كان الرجل يجعل ثلثاً للفقراء، وثلثاً لأهله وعياله، وثلثاً يعيده في زرع الأرض.'
+                ],
+                moral: 'المداومة على الصدقة تستجلب الرزق والبركة من السماء.'
+            },
+            {
+                id: 95,
+                lang: 'arabic',
+                category: 'History',
+                title: 'أويس القرني وبره العظيم بأمه',
+                era: 'التابعون • بر الوالدين',
+                excerpt: 'منعه بره بأمه المريضة من السفر لرؤية النبي ﷺ، فذكره النبي ﷺ بالخير لأصحابه.',
+                content: [
+                    'كان أويس القرني خاملاً في الأرض معروفاً في السماء بصدق بره وإخلاصه.'
+                ],
+                moral: 'بر الوالدين من أعظم القربات التي ترفع العبد عند الله.'
+            },
+            {
+                id: 96,
+                lang: 'arabic',
+                category: 'History',
+                title: 'الإمام البخاري وتحري الصدق في الحديث',
+                era: 'التراث العلمي • الأمانة العلمية',
+                excerpt: 'رحل الإمام البخاري مسافة طويلة لحديث واحد فلما رأى الراوي يوهم دابته بطعام غير موجود ترك الرواية عنه.',
+                content: [
+                    'قال رحمه الله: من لم يصدق مع البهيمة لا يؤتمن على حديث رسول الله ﷺ.'
+                ],
+                moral: 'الصدق لا يتجزأ في صغير الأمور ولا كبيرها.'
+            },
+            {
+                id: 97,
+                lang: 'arabic',
+                category: 'History',
+                title: 'فاطمة الفهرية وتأسيس جامعة القرويين',
+                era: '٨٥٩م • فاس، المغرب • منارة العلم',
+                excerpt: 'وقفت فاطمة الفهرية ميراثها لبناء جامع وجامعة القرويين بفاس، أقدم جامعة مستمرة في العالم.',
+                content: [
+                    'ظلت صائمة طوال مدة البناء حتى اكتمل هذا الصرح العلمي الذي تخرج فيه كبار العلماء عبر القرون.'
+                ],
+                moral: 'بناء مؤسسات العلم من أعظم الصدقات الجارية للأمة.'
+            },
+            {
+                id: 98,
+                lang: 'arabic',
+                category: 'History',
+                title: 'صلاح الدين الأيوبي ونبل الفروسية في القدس',
+                era: '١١٨٧م • أخلاق الفتح',
+                excerpt: 'عند فتح بيت المقدس منع صلاح الدين الانتقام وأمّن السكان ودفع فدية الفقراء من ماله الخاص.',
+                content: [
+                    'جسد صلاح الدين أخلاق الإسلام في الرحمة والوفاء بالعهود حتى شهد له خصومه بالنبل.'
+                ],
+                moral: 'العفو والرحمة عند النصر هما عنوان الحضارة الحقيقية.'
+            },
+            {
+                id: 99,
+                lang: 'arabic',
+                category: 'History',
+                title: 'الإمام أحمد بن حنبل واستغفار الخباز',
+                era: 'بغداد • فضل الاستغفار',
+                excerpt: 'لازم خباز الاستغفار في كل أحواله فاستجاب الله جميع دعواته حتى ساق إليه الإمام أحمد بن حنبل.',
+                content: [
+                    'قال الإمام أحمد للخباز مبتسماً: أنا أحمد بن حنبل، والله لقد جُررت إليك جراً.'
+                ],
+                moral: 'الاستغفار الدائم يفتح مغاليق الأبواب ويحقق الأمنيات.'
+            },
+            {
+                id: 100,
+                lang: 'arabic',
+                category: 'History',
+                title: 'عمر بن عبد العزيز وعدل الحكم',
+                era: 'الخلافة الأموية • الرفاه والعدل',
+                excerpt: 'في غضون عامين من العدل والورع فاضت أموال الزكاة حتى لم يُوجد فقير يأخذها.',
+                content: [
+                    'رد عمر بن عبد العزيز المظالم وأقام العدل فعم الرخاء أرجاء الدولة الإسلامية.'
+                ],
+                moral: 'العدل والأمانة أساس صلاح المجتمعات وازدهارها.'
+            }
+        ];
+
+        // Application State
+        let currentLang = 'all';
+        let filteredStories = [...storiesData];
+        let activeModalStoryId = null;
+
+        /**
+         * Initialize the application once DOM is loaded
+         */
+        window.addEventListener('DOMContentLoaded', () => {
+            // Check URL hash or query param if user navigated via #english, #urdu, or #arabic
+            const hash = window.location.hash.replace('#', '').toLowerCase();
+            if (['english', 'urdu', 'arabic'].includes(hash)) {
+                switchLanguage(hash);
+            } else {
+                renderStories();
+            }
+
+            // Close modal on Escape key or backdrop click
+            const modal = document.getElementById('story-modal');
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeStoryModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeStoryModal();
+                }
+            });
+        });
+
+        /**
+         * Switch active language view (simulating seamless navigation between index.html, english.html, urdu.html, arabic.html)
+         */
+        function switchLanguage(lang, event) {
+            if (event) event.preventDefault();
+            currentLang = lang;
+            window.history.replaceState(null, '', lang === 'all' ? '#all' : `#${lang}`);
+
+            // Update Navbar Active Tab Styles
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('bg-goldPrimary', 'text-emeraldDark', 'shadow');
+                tab.classList.add('text-emerald-100', 'hover:text-goldLight', 'hover:bg-emeraldMid/60');
+            });
+
+            const activeTab = document.getElementById(`nav-${lang}`);
+            if (activeTab) {
+                activeTab.classList.remove('text-emerald-100', 'hover:text-goldLight', 'hover:bg-emeraldMid/60');
+                activeTab.classList.add('bg-goldPrimary', 'text-emeraldDark', 'shadow');
+            }
+
+            // Update Hero Banner & File Indicator
+            const fileBadge = document.getElementById('active-file-badge');
+            const sectionHeading = document.getElementById('section-heading');
+
+            if (lang === 'all') {
+                fileBadge.textContent = 'Viewing Complete Archive • index.html';
+                sectionHeading.textContent = 'All 100 Islamic Stories';
+            } else if (lang === 'english') {
+                fileBadge.textContent = 'Viewing English Edition • english.html';
+                sectionHeading.textContent = 'English Islamic Stories (34 Tales)';
+            } else if (lang === 'urdu') {
+                fileBadge.textContent = 'Viewing Urdu Edition • urdu.html (اردو)';
+                sectionHeading.textContent = 'اردو اسلامی کہانیاں — Urdu Stories (33 Tales)';
+            } else if (lang === 'arabic') {
+                fileBadge.textContent = 'Viewing Arabic Edition • arabic.html (العربية)';
+                sectionHeading.textContent = 'قصص إسلامية عربية — Arabic Stories (33 Tales)';
+            }
+
+            handleSearchAndFilter();
+        }
+
+        /**
+         * Filter stories by selected language, category dropdown, and search input
+         */
+        function handleSearchAndFilter() {
+            const searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+            const categoryQuery = document.getElementById('category-filter').value;
+
+            filteredStories = storiesData.filter(story => {
+                const matchesLang = currentLang === 'all' || story.lang === currentLang;
+                const matchesCategory = categoryQuery === 'all' || story.category === categoryQuery;
+                const matchesSearch = !searchQuery ||
+                    story.title.toLowerCase().includes(searchQuery) ||
+                    story.excerpt.toLowerCase().includes(searchQuery) ||
+                    story.era.toLowerCase().includes(searchQuery) ||
+                    story.moral.toLowerCase().includes(searchQuery) ||
+                    String(story.id) === searchQuery;
+
+                return matchesLang && matchesCategory && matchesSearch;
+            });
+
+            renderStories();
+        }
+
+        /**
+         * Reset all search and category filters
+         */
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('category-filter').value = 'all';
+            switchLanguage('all');
+        }
+
+        /**
+         * Render story cards into the grid with proper RTL/LTR typography
+         */
+        function renderStories() {
+            const grid = document.getElementById('stories-grid');
+            const emptyState = document.getElementById('empty-state');
+            const resultsCount = document.getElementById('results-count');
+
+            resultsCount.textContent = `Showing ${filteredStories.length} of ${storiesData.length} stories`;
+
+            if (filteredStories.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filteredStories.map(story => {
+                const isRTL = story.lang === 'urdu' || story.lang === 'arabic';
+                const dirAttr = isRTL ? 'rtl' : 'ltr';
+                const fontClass = story.lang === 'urdu'
+                    ? 'font-urdu leading-loose'
+                    : story.lang === 'arabic'
+                        ? 'font-arabic leading-relaxed'
+                        : 'font-sans';
+
+                const langLabel = story.lang === 'english'
+                    ? 'English'
+                    : story.lang === 'urdu'
+                        ? 'اردو • Urdu'
+                        : 'العربية • Arabic';
+
+                const langBadgeStyle = story.lang === 'english'
+                    ? 'bg-emerald-950/90 text-goldLight border-goldPrimary/40'
+                    : story.lang === 'urdu'
+                        ? 'bg-amber-950/90 text-amber-200 border-amber-400/40'
+                        : 'bg-teal-950/90 text-teal-200 border-teal-400/40';
+
+                const readCtaText = story.lang === 'urdu'
+                    ? 'مکمل کہانی پڑھیں ←'
+                    : story.lang === 'arabic'
+                        ? 'اقرأ القصة كاملة ←'
+                        : 'Read Full Story →';
+
+                return `
+                    <article 
+                        onclick="openStoryModal(${story.id})"
+                        class="group cursor-pointer rounded-3xl bg-parchment hover:bg-white text-stone-900 border border-goldPrimary/40 hover:border-goldPrimary shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-6"
+                    >
+                        <div>
+                            <!-- Top Card Metadata -->
+                            <div class="flex items-center justify-between gap-2 mb-4">
+                                <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-xl bg-emeraldDeep text-goldLight text-xs font-bold tracking-wide">
+                                    #${String(story.id).padStart(3, '0')}
+                                </span>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-xl text-xs font-medium bg-stone-200/80 text-stone-700">
+                                        ${story.category}
+                                    </span>
+                                    <span class="px-2.5 py-1 rounded-xl text-xs font-semibold border ${langBadgeStyle}">
+                                        ${langLabel}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Title & Excerpt (RTL aware for Urdu & Arabic) -->
+                            <div dir="${dirAttr}" class="${fontClass}">
+                                <h3 class="text-xl font-bold text-emeraldDeep group-hover:text-emeraldMid transition-colors mb-2">
+                                    ${story.title}
+                                </h3>
+                                <p class="text-xs font-semibold text-amber-800 mb-3">
+                                    ${story.era}
+                                </p>
+                                <p class="text-sm text-stone-700 line-clamp-3">
+                                    ${story.excerpt}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Moral Preview & CTA -->
+                        <div class="mt-5 pt-4 border-t border-stone-200/90">
+                            <div dir="${dirAttr}" class="${fontClass} text-xs text-stone-600 bg-parchmentWarm rounded-xl p-3 mb-3 border border-amber-200/70">
+                                <span class="font-bold text-emeraldDeep">✦</span> ${story.moral}
+                            </div>
+                            <div class="flex items-center justify-between text-xs font-bold text-emeraldDeep group-hover:text-amber-700 transition-colors">
+                                <span>Storyesh Library</span>
+                                <span>${readCtaText}</span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        /**
+         * Open the illuminated story reader modal
+         */
+        function openStoryModal(storyId) {
+            const story = storiesData.find(s => s.id === storyId);
+            if (!story) return;
+
+            activeModalStoryId = storyId;
+            const isRTL = story.lang === 'urdu' || story.lang === 'arabic';
+            const wrapper = document.getElementById('modal-content-wrapper');
+
+            wrapper.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+            wrapper.className = `mt-5 space-y-5 ${
+                story.lang === 'urdu'
+                    ? 'font-urdu leading-loose'
+                    : story.lang === 'arabic'
+                        ? 'font-arabic leading-relaxed'
+                        : 'font-sans'
+            }`;
+
+            document.getElementById('modal-number').textContent = `#${String(story.id).padStart(3, '0')}`;
+            document.getElementById('modal-lang-badge').textContent =
+                story.lang === 'english' ? 'English' : story.lang === 'urdu' ? 'اردو (Urdu)' : 'العربية (Arabic)';
+            document.getElementById('modal-category').textContent = story.category;
+            document.getElementById('modal-title').textContent = story.title;
+            document.getElementById('modal-subtitle').textContent = story.era;
+
+            document.getElementById('modal-body').innerHTML = story.content
+                .map(paragraph => `<p>${paragraph}</p>`)
+                .join('');
+
+            document.getElementById('modal-moral-label').textContent =
+                story.lang === 'urdu'
+                    ? '✦ سبق اور نصیحت'
+                    : story.lang === 'arabic'
+                        ? '✦ العبرة والفائدة'
+                        : '✦ Moral & Reflection';
+
+            document.getElementById('modal-moral').textContent = story.moral;
+
+            const modal = document.getElementById('story-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        /**
+         * Close the story reader modal
+         */
+        function closeStoryModal() {
+            const modal = document.getElementById('story-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        /**
+         * Navigate to previous or next story within the current filtered list
+         */
+        function navigateModalStory(step) {
+            if (!activeModalStoryId || filteredStories.length === 0) return;
+            const currentIndex = filteredStories.findIndex(s => s.id === activeModalStoryId);
+            if (currentIndex === -1) return;
+
+            const nextIndex = (currentIndex + step + filteredStories.length) % filteredStories.length;
+            openStoryModal(filteredStories[nextIndex].id);
+        }
+
+        /**
+         * Copy active story text safely using document.execCommand('copy')
+         */
+        function copyCurrentStory() {
+            const story = storiesData.find(s => s.id === activeModalStoryId);
+            if (!story) return;
+
+            const textToCopy = `${story.title} (${story.era})\n\n${story.content.join('\n\n')}\n\nMoral: ${story.moral}\n— Storyesh Islamic Stories`;
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+                const btn = document.getElementById('copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied ✓';
+                setTimeout(() => { btn.textContent = originalText; }, 2000);
+            } catch (err) {
+                console.error('Copy failed', err);
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+    </script>
+</body>
+</html>

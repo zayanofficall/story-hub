@@ -1,0 +1,4 @@
+api:
+  port: 2000
+  target:
+    url: https://apibin.io
